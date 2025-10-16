@@ -3,6 +3,7 @@
 import { cn } from "@dub/utils";
 
 export function BrowserGraphic({ domain }: { domain: string }) {
+  console.log("domain", domain)
   return (
     <div className="w-full p-1 [mask-image:linear-gradient(black_50%,transparent_90%)]">
       <div className="w-full rounded-t-lg border border-neutral-300 ring ring-black/5">

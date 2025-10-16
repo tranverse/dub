@@ -35,7 +35,7 @@ export function InviteTeammatesForm({
   const { isMobile } = useMediaQuery();
 
   const maxTeammates = saveOnly ? 4 : 10;
-
+  console.log("maxTeammates", maxTeammates, saveOnly)
   const {
     control,
     register,
@@ -62,7 +62,8 @@ export function InviteTeammatesForm({
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ teammates }),
           },
-        );
+        );   
+        console.log("res", res)
 
         if (res.ok) {
           await mutate(`/api/workspaces/${id}/invites`);

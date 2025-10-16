@@ -86,6 +86,7 @@ export function PartnerLinkCard({ link }: { link: PartnerProfileLinkProps }) {
     },
   );
 
+
   const totals = useMemo(() => {
     const newTotals = timeseries?.reduce(
       (acc, { clicks, leads, saleAmount }) => ({
@@ -95,14 +96,15 @@ export function PartnerLinkCard({ link }: { link: PartnerProfileLinkProps }) {
       }),
       { clicks: 0, leads: 0, saleAmount: 0 },
     );
-
-    if (newTotals) {
+      
+    if (newTotals) { 
       lastValidTotals.current = newTotals;
       return newTotals;
     }
 
     return lastValidTotals.current ?? { clicks: 0, leads: 0, saleAmount: 0 };
   }, [timeseries]);
+    console.log("totals", totals)
 
   const chartData = useMemo(() => {
     return timeseries?.map(({ start, clicks, leads, saleAmount }) => ({

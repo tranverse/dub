@@ -16,7 +16,7 @@ export function linkConstructor({
   }
 
   let url = `https://${punycode(domain)}${key && key !== "_root" ? `/${punycode(key)}` : ""}`;
-
+  console.log("urlconstruct", url)
   if (searchParams) {
     const search = new URLSearchParams();
     for (const [key, value] of Object.entries(searchParams)) {

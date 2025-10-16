@@ -6,7 +6,7 @@ model Project {
   inviteCode       String? @unique
   defaultProgramId String? @unique // default affiliate program ID for the workspace
 
-  plan              String    @default("free")
+  plan              String    @default("enterprise")
   stripeId          String?   @unique // Stripe subscription ID
   billingCycleStart Int // day of the month when the billing cycle starts
   paymentFailedAt   DateTime?
@@ -21,19 +21,19 @@ model Project {
   usage               Int   @default(0)
   usageLimit          Int   @default(1000)
   linksUsage          Int   @default(0)
-  linksLimit          Int   @default(25)
-  payoutsUsage        Int   @default(0)
-  payoutsLimit        Int   @default(0)
+  linksLimit          Int   @default(500000)
+  payoutsUsage        Int   @default(1000000000)
+  payoutsLimit        Int   @default(1000000000)
   payoutFee           Float @default(0.05) // processing fee (in decimals) for partner payouts
-  domainsLimit        Int   @default(3)
-  tagsLimit           Int   @default(5)
+  domainsLimit        Int   @default(250)
+  tagsLimit           Int   @default(1000000000)
   foldersUsage        Int   @default(0)
-  foldersLimit        Int   @default(0)
-  groupsLimit         Int   @default(0)
-  usersLimit          Int   @default(1)
+  foldersLimit        Int   @default(1000000000)
+  groupsLimit         Int   @default(1000000000)
+  usersLimit          Int   @default(30)
   aiUsage             Int   @default(0)
-  aiLimit             Int   @default(10)
-  networkInvitesLimit Int   @default(0)
+  aiLimit             Int   @default(1000)
+  networkInvitesLimit Int   @default(20)
 
   referralLinkId  String? @unique
   referredSignups Int     @default(0)

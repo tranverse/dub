@@ -57,7 +57,7 @@ export default function LinkPreviewTooltip({ data }: { data: LinkProps }) {
               </a>
             ) : (
               <span className="truncate text-neutral-400">
-                No URL configured
+                No URL configured sss
               </span>
             )}
           </div>

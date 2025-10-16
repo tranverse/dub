@@ -72,6 +72,7 @@ export function CreateWorkspaceForm({
   return (
     <form
       onSubmit={handleSubmit(async (data) => {
+        console.log("data", data)
         try {
           const res = await fetch("/api/workspaces", {
             method: "POST",

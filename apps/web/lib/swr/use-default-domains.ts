@@ -17,12 +17,14 @@ export default function useDefaultDomains(opts: { search?: string } = {}) {
       dedupingInterval: 60000,
     },
   );
-
+  console.log(data)
   const defaultDomains = useMemo(() => {
     return flags?.noDubLink
       ? data?.filter((domain) => domain !== "dub.link")
       : data;
   }, [data, flags]);
+
+  console.log(defaultDomains)
 
   return {
     defaultDomains,

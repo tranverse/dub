@@ -51,7 +51,7 @@ export function LinkPageClient() {
   }>();
 
   const linkParts = Array.isArray(linkParams) ? linkParams : null;
-
+  console.log("linkpart", linkParts)
   if (!linkParts) redirect(`/${workspaceSlug}/links`);
 
   const domain = linkParts[0];
@@ -80,7 +80,7 @@ export function LinkPageClient() {
       },
     },
   );
-
+  console.log("link", link)
   return link ? (
     <LinkBuilderProvider props={link} workspace={workspace} modal={false}>
       <LinkBuilder link={link} />

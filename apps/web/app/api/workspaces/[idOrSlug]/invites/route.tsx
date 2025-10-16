@@ -72,7 +72,7 @@ export const POST = withWorkspace(
         message: "User already exists in this workspace.",
       });
     }
-
+    console.log("user limit", workspace.usersLimit)
     if (
       workspaceUserCount + workspaceInviteCount + teammates.length >
       workspace.usersLimit

@@ -13,8 +13,7 @@ export const LinkBuilderShortLinkInput = memo(
   forwardRef<HTMLInputElement>((_, ref) => {
     const { props } = useLinkBuilderContext();
     const { control, setValue, clearErrors } = useFormContext<LinkFormData>();
-
-    const { errors, isSubmitting, isSubmitSuccessful } = useFormState({
+        const { errors, isSubmitting, isSubmitSuccessful } = useFormState({
       control,
       name: ["key"],
     });
@@ -22,6 +21,8 @@ export const LinkBuilderShortLinkInput = memo(
       control,
       name: ["domain", "key", "url", "title", "description"],
     });
+
+    console.log("domail", domain)
 
     const { loading } = useAvailableDomains({
       currentDomain: domain,

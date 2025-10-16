@@ -46,7 +46,7 @@ export function DefaultDomains() {
   const [submitting, setSubmitting] = useState(false);
   const [defaultDomains, setDefaultDomains] = useState<string[]>([]);
   const { defaultDomains: initialDefaultDomains, mutate } = useDefaultDomains();
-
+  console.log("defaultDomains", defaultDomains, initialDefaultDomains)
   const permissionsError = clientAccessCheck({
     action: "domains.write",
     role,

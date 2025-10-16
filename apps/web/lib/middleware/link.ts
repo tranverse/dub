@@ -37,13 +37,13 @@ import { crawlBitly } from "./utils/crawl-bitly";
 import { isIosAppStoreUrl } from "./utils/is-ios-app-store-url";
 import { isSingularTrackingUrl } from "./utils/is-singular-tracking-url";
 import { resolveABTestURL } from "./utils/resolve-ab-test-url";
-
+// redirect shorten url to real url
 export default async function LinkMiddleware(
   req: NextRequest,
   ev: NextFetchEvent,
 ) {
   let { domain, fullKey: originalKey } = parse(req);
-
+  console.log("domaindomain", domain)
   if (!domain) {
     return NextResponse.next();
   }
@@ -58,7 +58,7 @@ export default async function LinkMiddleware(
 
   const inspectMode = key.endsWith("+");
   // if inspect mode is enabled, remove the trailing `+` from the key
-  if (inspectMode) {
+  if (inspectMode) {   
     key = key.slice(0, -1);
   }
 
@@ -102,7 +102,7 @@ export default async function LinkMiddleware(
             "X-Robots-Tag": "googlebot: noindex",
             // pass the Referer value to the not found URL
             Referer: req.url,
-          },
+          },   
           status: 302,
         });
       } else {

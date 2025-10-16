@@ -124,7 +124,7 @@ export const POST = withWorkspace(
 
     try {
       const response = await createLink(link);
-
+      console.log("linkresponse", response)
       if (response.projectId && response.userId) {
         waitUntil(
           sendWorkspaceWebhook({

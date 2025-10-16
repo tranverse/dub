@@ -54,6 +54,7 @@ export function LinkBuilderProvider({
     Boolean(rest.props),
   );
 
+  console.log("rest", rest)
   const form = useForm<LinkFormData>({
     defaultValues: rest.props ||
       rest.duplicateProps || {

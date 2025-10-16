@@ -10,7 +10,7 @@ import { NextResponse } from "next/server";
 export const GET = withWorkspace(
   async ({ workspace, searchParams }) => {
     const { search } = getDefaultDomainsQuerySchema.parse(searchParams);
-
+    console.log(workspace.id);
     const data = await prisma.defaultDomains.findUnique({
       where: {
         projectId: workspace.id,
@@ -28,9 +28,13 @@ export const GET = withWorkspace(
       },
     });
 
+    console.log("data", data);
+
     let defaultDomains: string[] = [];
 
     if (data) {
+      console.log("data keys:", Object.keys(data));
+      console.log("DUB_DOMAINS_ARRAY:", DUB_DOMAINS_ARRAY);
       defaultDomains = Object.keys(data)
         .filter((key) => data[key])
         .map(
@@ -41,7 +45,7 @@ export const GET = withWorkspace(
           search ? domain?.toLowerCase().includes(search.toLowerCase()) : true,
         );
     }
-
+    console.log("defaultDomains", defaultDomains);
     return NextResponse.json(defaultDomains);
   },
   {

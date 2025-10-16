@@ -39,7 +39,7 @@ export async function createLink(link: ProcessedLinkProps) {
     testStartedAt,
     testCompletedAt,
   } = link;
-
+  // create link
   const combinedTagIds = combineTagIds(link);
 
   const { utm_source, utm_medium, utm_campaign, utm_term, utm_content } =
@@ -92,7 +92,7 @@ export async function createLink(link: ProcessedLinkProps) {
               })),
             },
           }),
-
+ 
         // Associate tags by IDs (takes priority over tagNames)
         ...(combinedTagIds &&
           combinedTagIds.length > 0 && {

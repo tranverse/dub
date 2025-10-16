@@ -64,6 +64,7 @@ function LinkBuilderOuter({
   homepageDemo,
   ...rest
 }: LinkBuilderProps & LinkBuilderModalProps) {
+  console.log("LinkBuilderOuter", rest)
   return (
     <LinkBuilderProvider {...rest}>
       <LinkBuilderInner
@@ -73,7 +74,7 @@ function LinkBuilderOuter({
       />
     </LinkBuilderProvider>
   );
-}
+}// create link
 
 function LinkBuilderInner({
   showLinkBuilder,
@@ -85,7 +86,7 @@ function LinkBuilderInner({
   const { id: workspaceId, slug, flags } = useWorkspace();
 
   const { props, duplicateProps } = useLinkBuilderContext();
-
+  console.log(props)
   const {
     control,
     handleSubmit,
@@ -97,6 +98,7 @@ function LinkBuilderInner({
     control,
     name: ["domain", "key"],
   });
+  console.log(domain)
 
   useMetatags({
     enabled: showLinkBuilder,

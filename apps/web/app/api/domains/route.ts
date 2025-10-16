@@ -99,7 +99,7 @@ export const POST = withWorkspace(
       appleAppSiteAssociation,
       deepviewData,
     } = await createDomainBodySchemaExtended.parseAsync(body);
-
+    console.log("workspace", workspace.plan)
     if (workspace.plan === "free") {
       if (
         logo ||
@@ -128,16 +128,16 @@ export const POST = withWorkspace(
     }
 
     const validDomain = await validateDomain(slug);
-
+    console.log("validDomain", validDomain)
     if (validDomain.error && validDomain.code) {
       throw new DubApiError({
         code: validDomain.code,
         message: validDomain.error,
       });
     }
-
+    console.log("slug", slug)
     const vercelResponse = await addDomainToVercel(slug);
-
+    console.log("vercelResponse", vercelResponse)
     if (
       vercelResponse.error &&
       vercelResponse.error.code !== "domain_already_in_use" // ignore this error
@@ -149,7 +149,7 @@ export const POST = withWorkspace(
 
     const logoUploaded = logo
       ? await storage.upload(`domains/${domainId}/logo_${nanoid(7)}`, logo)
-      : null;
+      : null;   
 
     const domainRecord = await prisma.$transaction(
       async (tx) => {
@@ -158,6 +158,9 @@ export const POST = withWorkspace(
             projectId: workspace.id,
           },
         });
+
+        console.log("totalDomains", totalDomains)
+        console.log("workspace.domainsLimit", workspace.domainsLimit)
 
         if (totalDomains >= workspace.domainsLimit) {
           throw new DubApiError({
@@ -169,6 +172,7 @@ export const POST = withWorkspace(
             }),
           });
         }
+
         return await tx.domain.create({
           data: {
             id: domainId,
@@ -195,6 +199,8 @@ export const POST = withWorkspace(
         timeout: 5000,
       },
     );
+
+    console.log("domainRecord", domainRecord)
 
     await createLink({
       ...DEFAULT_LINK_PROPS,

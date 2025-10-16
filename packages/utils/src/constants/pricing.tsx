@@ -367,7 +367,7 @@ export const SELF_SERVE_PAID_PLANS = PLANS.filter((p) =>
   ["Pro", "Business", "Advanced"].includes(p.name),
 );
 
-export const FREE_WORKSPACES_LIMIT = 2;
+export const FREE_WORKSPACES_LIMIT = 10000;
 
 export const getPlanFromPriceId = (priceId: string) => {
   return PLANS.find((plan) => plan.price.ids?.includes(priceId)) || null;

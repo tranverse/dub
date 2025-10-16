@@ -58,8 +58,9 @@ export const GET = withSession(async ({ session }) => {
     ),
   );
 });
-
+// create workspace
 export const POST = withSession(async ({ req, session }) => {
+  console.log("req", req);
   const { name, slug, logo } = await createWorkspaceSchema.parseAsync(
     await req.json(),
   );
@@ -80,7 +81,7 @@ export const POST = withSession(async ({ req, session }) => {
       async (tx) => {
         const freeWorkspaces = await tx.project.count({
           where: {
-            plan: "free",
+            plan: "enterprise",
             users: {
               some: {
                 userId: session.user.id,
@@ -89,14 +90,16 @@ export const POST = withSession(async ({ req, session }) => {
             },
           },
         });
+        console.log("FREE_WORKSPACES_LIMIT", FREE_WORKSPACES_LIMIT);
 
-        if (freeWorkspaces >= FREE_WORKSPACES_LIMIT) {
-          throw new DubApiError({
-            code: "exceeded_limit",
-            message: `You can only create up to ${FREE_WORKSPACES_LIMIT} free workspaces. Additional workspaces require a paid plan.`,
-          });
-        }
-
+        console.log("freeWorkspaces", freeWorkspaces, FREE_WORKSPACES_LIMIT);
+        // if (freeWorkspaces >= FREE_WORKSPACES_LIMIT) {
+        //   throw new DubApiError({
+        //     code: "exceeded_limit",
+        //     message: `You can only create up to ${FREE_WORKSPACES_LIMIT} 222 free workspaces. Additional workspaces require a paid plan.`,
+        //   });
+        // }
+   
         const workspaceId = createWorkspaceId();
         uploadedImageUrl = logo
           ? `${R2_URL}/workspaces/${workspaceId}/logo_${nanoid(7)}`
@@ -149,6 +152,8 @@ export const POST = withSession(async ({ req, session }) => {
         timeout: 5000,
       },
     );
+
+    console.log("workspace", workspace);
 
     waitUntil(
       Promise.allSettled([

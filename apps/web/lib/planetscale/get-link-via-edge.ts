@@ -30,7 +30,7 @@ export const getLinkViaEdge = async ({
 
   const link =
     rows && Array.isArray(rows) && rows.length > 0
-      ? (rows[0] as EdgeLinkProps)
+      ? (rows[0] as EdgeLinkProps)  
       : null;
 
   return link

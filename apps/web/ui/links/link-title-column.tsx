@@ -69,14 +69,14 @@ const quickViewSettings = [
   { label: "Android Targeting", icon: Robot, key: "android" },
   { label: "Geo Targeting", icon: EarthPosition, key: "geo" },
 ];
-
+// link
 const LOGO_SIZE_CLASS_NAME =
   "size-4 sm:size-6 group-data-[variant=loose]/card-list:sm:size-5";
 
 export function LinkTitleColumn({ link }: { link: ResponseLink }) {
   const { domain, key } = link;
   const { slug } = useWorkspace();
-
+  console.log("domain, key", domain, key)
   const { variant, loading } = useContext(CardList.Context);
   const { displayProperties } = useContext(LinksDisplayContext);
 
@@ -137,7 +137,7 @@ export function LinkTitleColumn({ link }: { link: ResponseLink }) {
                       link.archived && "text-neutral-600",
                     )}
                   >
-                    {linkConstructor({ domain, key, pretty: true })}
+                    {linkConstructor({ domain, key, pretty: true })}ff
                   </a>
                 </UnverifiedTooltip>
               )}
@@ -193,7 +193,7 @@ function UnverifiedTooltip({
           }
         >
           <p className="cursor-default truncate font-semibold leading-6 text-neutral-500 line-through">
-            {linkConstructor({ domain, key: _key, pretty: true })}
+            {linkConstructor({ domain, key: _key, pretty: true })}sss
           </p>
         </Tooltip>
       ) : (
@@ -323,7 +323,7 @@ const LinkIcon = memo(({ link }: { link: ResponseLink }) => {
 const Details = memo(
   ({ link, compact }: { link: ResponseLink; compact?: boolean }) => {
     const { url, createdAt } = link;
-
+    console.log("link", link, url)
     const { displayProperties } = useContext(LinksDisplayContext);
 
     return (
@@ -358,7 +358,7 @@ const Details = memo(
               </a>
             ) : (
               <span className="truncate text-neutral-400">
-                No URL configured
+                No URL configured sss123
               </span>
             )
           ) : (
