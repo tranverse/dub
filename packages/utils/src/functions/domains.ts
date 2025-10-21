@@ -80,7 +80,7 @@ export const getDomainWithoutWWW = (url: string) => {
   } catch (e) {
     return null;
   }
-};
+};   
 
 export const isDubDomain = (domain: string) => {
   return DUB_DOMAINS.some((d) => d.slug === domain);

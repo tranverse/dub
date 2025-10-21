@@ -22,6 +22,8 @@ export async function getDomains() {
       }),
     ]);
 
+    console.log("domainsResponse", domainsResponse)
+
   const [domains, defaultDomains] = await Promise.all([
     domainsResponse,
     parseApiResponse<string[]>(defaultDomainsResponse),

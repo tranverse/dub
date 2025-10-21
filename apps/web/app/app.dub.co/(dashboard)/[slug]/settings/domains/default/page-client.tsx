@@ -22,6 +22,8 @@ import { toast } from "sonner";
 
 function DubDomainsIcon(domain: string) {
   switch (domain) {
+    case "dub.local":
+      return ChatGPT;
     case "chatg.pt":
       return ChatGPT;
     case "git.new":
@@ -46,19 +48,18 @@ export function DefaultDomains() {
   const [submitting, setSubmitting] = useState(false);
   const [defaultDomains, setDefaultDomains] = useState<string[]>([]);
   const { defaultDomains: initialDefaultDomains, mutate } = useDefaultDomains();
-  console.log("defaultDomains", defaultDomains, initialDefaultDomains)
+  console.log("initialDefaultDomains", initialDefaultDomains);
   const permissionsError = clientAccessCheck({
     action: "domains.write",
     role,
     customPermissionDescription: "manage default domains",
   }).error;
-
+  console.log("DUB_DOMAINS", DUB_DOMAINS)
   useEffect(() => {
     if (initialDefaultDomains) {
       setDefaultDomains(initialDefaultDomains);
     }
   }, [initialDefaultDomains]);
-
   return (
     <div className="grid gap-5">
       <div className="rounded-lg bg-neutral-100 p-4">

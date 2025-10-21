@@ -3,14 +3,14 @@ import { withWorkspace } from "@/lib/auth";
 import z from "@/lib/zod";
 import { getDefaultDomainsQuerySchema } from "@/lib/zod/schemas/domains";
 import { prisma } from "@dub/prisma";
-import { DUB_DOMAINS_ARRAY } from "@dub/utils";
+// import { DUB_DOMAINS, DUB_DOMAINS_ARRAY } from "@dub/utils";
 import { NextResponse } from "next/server";
+import { DUB_DOMAINS, DUB_DOMAINS_ARRAY } from "@dub/utils";
 
 // GET /api/domains/default - get default domains
 export const GET = withWorkspace(
   async ({ workspace, searchParams }) => {
     const { search } = getDefaultDomainsQuerySchema.parse(searchParams);
-    console.log(workspace.id);
     const data = await prisma.defaultDomains.findUnique({
       where: {
         projectId: workspace.id,
@@ -18,6 +18,7 @@ export const GET = withWorkspace(
       select: {
         dubsh: true,
         dublink: true,
+        dublocal: true,
         chatgpt: true,
         sptifi: true,
         gitnew: true,
@@ -33,8 +34,10 @@ export const GET = withWorkspace(
     let defaultDomains: string[] = [];
 
     if (data) {
-      console.log("data keys:", Object.keys(data));
+      // console.log("data keys:", Object.keys(data));
+      console.log("DUB_DOMAINS:", DUB_DOMAINS);
       console.log("DUB_DOMAINS_ARRAY:", DUB_DOMAINS_ARRAY);
+
       defaultDomains = Object.keys(data)
         .filter((key) => data[key])
         .map(
@@ -77,6 +80,7 @@ export const PATCH = withWorkspace(
         projectId: workspace.id,
       },
       data: {
+        dublocal: defaultDomains.includes("dub.local"),
         dubsh: defaultDomains.includes("dub.sh"),
         dublink: defaultDomains.includes("dub.link"),
         chatgpt: defaultDomains.includes("chatg.pt"),

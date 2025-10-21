@@ -3,7 +3,7 @@ import { getDomainResponse } from "@/lib/api/domains/get-domain-response";
 import { verifyDomain } from "@/lib/api/domains/verify-domain";
 import { handleAndReturnErrorResponse } from "@/lib/api/errors";
 import { verifyVercelSignature } from "@/lib/cron/verify-vercel";
-import { prisma } from "@dub/prisma";
+import { prisma } from "@dub/prisma"; 
 import { log } from "@dub/utils";
 import { NextResponse } from "next/server";
 import { handleDomainUpdates } from "./utils";
@@ -18,7 +18,7 @@ import { handleDomainUpdates } from "./utils";
 
 export const dynamic = "force-dynamic";
 
-export async function GET(req: Request) {
+export async function GET(req: Request) {  
   try {
     await verifyVercelSignature(req);
 
@@ -28,6 +28,7 @@ export async function GET(req: Request) {
           // exclude domains that belong to us
           notIn: [
             "dub.sh",
+            "dub.local",
             "chatg.pt",
             "amzn.id",
             "spti.fi",

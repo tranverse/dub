@@ -12,6 +12,17 @@ export const DUB_DOMAINS = [
     description: "The default domain for all new accounts.",
     projectId: DUB_WORKSPACE_ID,
   },
+  {
+    id: "clxp3lfsb00011na8tfs7t0l1",
+    slug: "dub.local",
+    verified: true,
+    primary: false,
+    archived: false,
+    placeholder: "http://dub.local:8888/",
+    allowedHostnames: [],
+    description: "Local domain",
+    projectId: DUB_WORKSPACE_ID,
+  },
   ...(process.env.NEXT_PUBLIC_IS_DUB
     ? [
         {
@@ -26,6 +37,7 @@ export const DUB_DOMAINS = [
             "Premium short domain on Dub – only available on our Pro plan and above.",
           projectId: DUB_WORKSPACE_ID,
         },
+
         {
           id: "clce1z7cs00y8rbstk4xtnj0k",
           slug: "chatg.pt",
@@ -159,6 +171,12 @@ export const DUB_DEMO_LINKS = [
     domain: "d.to",
     key: "try",
     dashboardId: "dash_Rqy6tVEO5Ib4iVFvmYYTK4kO",
+  },
+  {
+    id: "cltshzzpd0005126z3rd2lvo5",
+    domain: "dub.local",
+    key: "try",
+    dashboardId: "dash_bUNOfMQVcKS0VMDa2HaYhOjg",
   },
   {
     id: "cltshzzpd0005126z3rd2lvo4",

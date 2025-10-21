@@ -19,7 +19,7 @@ import {
 import { combineTagIds } from "../tags/combine-tag-ids";
 import { businessFeaturesCheck, proFeaturesCheck } from "./plan-features-check";
 import { keyChecks, processKey } from "./utils";
-
+// redirect
 export async function processLink<T extends Record<string, any>>({
   payload,
   workspace,
@@ -158,7 +158,7 @@ export async function processLink<T extends Record<string, any>>({
   }
 
   // checks for dub.sh and dub.link links
-  if (domain === "dub.sh" || domain === "dub.link") {
+  if (domain === "dub.sh" || domain === "dub.link" || domain == "dub.local") {
     // for dub.link: check if workspace plan is pro+
     if (domain === "dub.link" && (!workspace || workspace.plan === "free")) {
       return {

@@ -137,7 +137,7 @@ export function LinkTitleColumn({ link }: { link: ResponseLink }) {
                       link.archived && "text-neutral-600",
                     )}
                   >
-                    {linkConstructor({ domain, key, pretty: true })}ff
+                    {linkConstructor({ domain, key, pretty: true })}
                   </a>
                 </UnverifiedTooltip>
               )}

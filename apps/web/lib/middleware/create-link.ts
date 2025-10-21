@@ -10,6 +10,6 @@ export default function CreateLinkMiddleware(req: NextRequest) {
   const redirectURL = new URL(`${APP_DOMAIN}/new`);
   redirectURL.searchParams.append("link", url);
   redirectURL.searchParams.append("domain", domain);
-
+  console.log("redirectURL", redirectURL)
   return NextResponse.redirect(redirectURL.toString());
 }
