@@ -94,7 +94,7 @@ export const POST = withWorkspace(
       await parseRequestBody(req),
     );
 
-    console.log(body);
+    console.log("body", body);
 
     if (!session) {
       const ip = req.headers.get("x-forwarded-for") || LOCALHOST_IP;

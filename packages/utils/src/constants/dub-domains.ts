@@ -19,7 +19,7 @@ export const DUB_DOMAINS = [
     primary: false,
     archived: false,
     placeholder: "http://dub.local:8888/",
-    allowedHostnames: [],
+    allowedHostnames: ["localhost:8888", "dub.local:8888"],
     description: "Local domain",
     projectId: DUB_WORKSPACE_ID,
   },

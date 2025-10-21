@@ -56,6 +56,7 @@ export async function createLink(link: ProcessedLinkProps) {
     prisma.link.create({
       data: {
         ...rest,
+        domain: link.domain == "dub.local" ? `${link.domain}:8888` : link.domain,
         id: createId({ prefix: "link_" }),
         key,
         shortLink: linkConstructorSimple({ domain: link.domain, key }),
@@ -92,7 +93,7 @@ export async function createLink(link: ProcessedLinkProps) {
               })),
             },
           }),
- 
+
         // Associate tags by IDs (takes priority over tagNames)
         ...(combinedTagIds &&
           combinedTagIds.length > 0 && {

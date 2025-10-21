@@ -14,9 +14,13 @@ export function linkConstructor({
   if (!domain) {
     return "";
   }
+  let url;
+  if (domain.includes("dub.local")) {
+    url = `http://${punycode(domain)}${key && key !== "_root" ? `/${punycode(key)}` : ""}`;
+  } else {
+    url = `https://${punycode(domain)}${key && key !== "_root" ? `/${punycode(key)}` : ""}`;
+  }
 
-  let url = `https://${punycode(domain)}${key && key !== "_root" ? `/${punycode(key)}` : ""}`;
-  console.log("urlconstruct", url)
   if (searchParams) {
     const search = new URLSearchParams();
     for (const [key, value] of Object.entries(searchParams)) {
@@ -35,5 +39,9 @@ export function linkConstructorSimple({
   domain: string;
   key: string;
 }) {
-  return `https://${domain}${key === "_root" ? "" : `/${key}`}`;
+  if (domain.includes("dub.local")) {
+    return `http://${domain}${key === "_root" ? "" : `/${key}`}`;
+  } else {
+    return `https://${domain}${key === "_root" ? "" : `/${key}`}`;
+  }
 }

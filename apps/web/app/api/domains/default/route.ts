@@ -29,15 +29,9 @@ export const GET = withWorkspace(
       },
     });
 
-    console.log("data", data);
-
     let defaultDomains: string[] = [];
 
     if (data) {
-      // console.log("data keys:", Object.keys(data));
-      console.log("DUB_DOMAINS:", DUB_DOMAINS);
-      console.log("DUB_DOMAINS_ARRAY:", DUB_DOMAINS_ARRAY);
-
       defaultDomains = Object.keys(data)
         .filter((key) => data[key])
         .map(
@@ -48,7 +42,6 @@ export const GET = withWorkspace(
           search ? domain?.toLowerCase().includes(search.toLowerCase()) : true,
         );
     }
-    console.log("defaultDomains", defaultDomains);
     return NextResponse.json(defaultDomains);
   },
   {
