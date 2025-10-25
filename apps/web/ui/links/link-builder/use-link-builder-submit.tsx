@@ -23,6 +23,13 @@ export function useLinkBuilderSubmit({
     async (data: LinkFormData) => {
       // @ts-ignore – exclude extra attributes from `data` object before sending to API
       const { user, tags, tagId, folderId, partnerId, ...rest } = data;
+      if (
+        props?.id &&
+        rest.domain.includes("dub.local") &&
+        !rest.domain.includes(":")
+      ) {
+        rest.domain = rest.domain + ":8888";
+      }
       const bodyData = {
         ...rest,
 

@@ -174,7 +174,7 @@ export function LinkifyTooltipContent({
       )}
     >
       <Linkify
-        as="p"
+        // as="p"
         options={{
           target: "_blank",
           rel: "noopener noreferrer nofollow",

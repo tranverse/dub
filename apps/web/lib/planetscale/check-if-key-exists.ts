@@ -12,6 +12,9 @@ export const checkIfKeyExists = async ({
   domain: string;
   key: string;
 }) => {
+  if (domain?.includes("dub.local")) {
+    domain = `${domain}:8888`;
+  }
   const isCaseSensitive = isCaseSensitiveDomain(domain);
   const keyToQuery = isCaseSensitive
     ? // for case sensitive domains, we need to encode the key

@@ -50,9 +50,9 @@ export const GET = withWorkspace(
     const response = await searchDomainsAvailability({
       domains: {
         domain0: domain,
-        domain1: `get${domain}`,
-        domain2: `try${domain}`,
-        domain3: `use${domain}`,
+        // domain1: `get${domain}`,
+        // domain2: `try${domain}`,
+        // domain3: `use${domain}`,
       },
     });
 

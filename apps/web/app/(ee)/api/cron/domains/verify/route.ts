@@ -29,6 +29,7 @@ export async function GET(req: Request) {
           notIn: [
             "dub.sh",
             "dub.local",
+            "dub.local.com",
             "chatg.pt",
             "amzn.id",
             "spti.fi",

@@ -17,7 +17,7 @@ export async function claimDotLinkDomain({
   domain,
   workspace,
   userId,
-  skipWorkspaceChecks = false,
+  skipWorkspaceChecks = true,
 }: {
   domain: string;
   workspace: WorkspaceWithUsers;
@@ -62,7 +62,6 @@ export async function claimDotLinkDomain({
       });
     }
   }
-
   const [response, totalDomains, matchingUnverifiedDomain] = await Promise.all([
     // register the domain
     registerDomain({ domain }),

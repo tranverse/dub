@@ -483,6 +483,10 @@ function DomainCombobox({
     modal: !link && !pathname.startsWith("/onboarding"),
   });
 
+  if (domain?.includes("dub.local")) {
+    domain = domain.split(":")[0];
+  }
+
   const options = useMemo(
     () =>
       loadingDomains

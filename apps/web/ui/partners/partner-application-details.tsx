@@ -37,7 +37,7 @@ export function PartnerApplicationDetails({
           <div className="mt-2">
             {field.value || field.value === "" ? (
               <Linkify
-                as="p"
+                // as="p"
                 options={{
                   target: "_blank",
                   rel: "noopener noreferrer nofollow",

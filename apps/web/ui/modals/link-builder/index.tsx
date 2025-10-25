@@ -86,7 +86,7 @@ function LinkBuilderInner({
   const { id: workspaceId, slug, flags } = useWorkspace();
 
   const { props, duplicateProps } = useLinkBuilderContext();
-  console.log(props)
+  console.log("props", props)
   const {
     control,
     handleSubmit,

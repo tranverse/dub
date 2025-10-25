@@ -51,10 +51,9 @@ export function LinkPageClient() {
   }>();
 
   const linkParts = Array.isArray(linkParams) ? linkParams : null;
-  console.log("linkpart", linkParts)
   if (!linkParts) redirect(`/${workspaceSlug}/links`);
 
-  const domain = linkParts[0];
+  let domain = linkParts[0];
   const slug = linkParts.length > 1 ? linkParts.slice(1).join("/") : "_root";
 
   const router = useRouter();
@@ -80,7 +79,7 @@ export function LinkPageClient() {
       },
     },
   );
-  console.log("link", link)
+  console.log("link", link);
   return link ? (
     <LinkBuilderProvider props={link} workspace={workspace} modal={false}>
       <LinkBuilder link={link} />

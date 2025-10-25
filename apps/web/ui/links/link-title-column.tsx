@@ -76,7 +76,6 @@ const LOGO_SIZE_CLASS_NAME =
 export function LinkTitleColumn({ link }: { link: ResponseLink }) {
   const { domain, key } = link;
   const { slug } = useWorkspace();
-  console.log("domain, key", domain, key)
   const { variant, loading } = useContext(CardList.Context);
   const { displayProperties } = useContext(LinksDisplayContext);
 
@@ -323,7 +322,6 @@ const LinkIcon = memo(({ link }: { link: ResponseLink }) => {
 const Details = memo(
   ({ link, compact }: { link: ResponseLink; compact?: boolean }) => {
     const { url, createdAt } = link;
-    console.log("link", link, url)
     const { displayProperties } = useContext(LinksDisplayContext);
 
     return (

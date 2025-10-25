@@ -99,7 +99,6 @@ export const POST = withWorkspace(
       appleAppSiteAssociation,
       deepviewData,
     } = await createDomainBodySchemaExtended.parseAsync(body);
-    console.log("workspace", workspace.plan)
     if (workspace.plan === "free") {
       if (
         logo ||
@@ -128,16 +127,13 @@ export const POST = withWorkspace(
     }
 
     const validDomain = await validateDomain(slug);
-    console.log("validDomain", validDomain)
     if (validDomain.error && validDomain.code) {
       throw new DubApiError({
         code: validDomain.code,
         message: validDomain.error,
       });
     }
-    console.log("slug", slug)
     const vercelResponse = await addDomainToVercel(slug);
-    console.log("vercelResponse", vercelResponse)
     if (
       vercelResponse.error &&
       vercelResponse.error.code !== "domain_already_in_use" // ignore this error

@@ -62,10 +62,12 @@ export function Form() {
         {
           method: "POST",
           body: JSON.stringify({
-            folder: "program-logos",
+            // folder: "program-logos",
+            folder: "dublocal-assets",
           }),
         },
       );
+      // console.log("responseu", await response.json());
 
       if (!response.ok) {
         throw new Error("Failed to get signed URL for upload.");
@@ -81,14 +83,17 @@ export function Form() {
           "Content-Length": file.size.toString(),
         },
       });
+      console.log("uploadResponse", uploadResponse);
 
       if (!uploadResponse.ok) {
         throw new Error("Failed to upload to signed URL");
       }
+      console.log("destinationUrl", destinationUrl);
 
       setValue("logo", destinationUrl, { shouldDirty: true });
       toast.success(`${file.name} uploaded!`);
     } catch (e) {
+      console.log("e", e)
       toast.error("Failed to upload logo");
     } finally {
       setIsUploading(false);

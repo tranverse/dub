@@ -49,6 +49,7 @@ model DefaultDomains {
   id          String  @id @default(cuid())
   dublink     Boolean @default(false)
   dublocal    Boolean @default(true)
+  dublocalcom Boolean @default(true)
   dubsh       Boolean @default(true)
   chatgpt     Boolean @default(true)
   sptifi      Boolean @default(true)

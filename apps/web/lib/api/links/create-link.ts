@@ -51,12 +51,14 @@ export async function createLink(link: ProcessedLinkProps) {
     domain: link.domain,
     key,
   });
-
+  if (link.domain?.includes("dub.local")) {
+    link.domain = `${link.domain}:8888`;
+  }
   const response = await withPrismaRetry(() =>
     prisma.link.create({
       data: {
         ...rest,
-        domain: link.domain == "dub.local" ? `${link.domain}:8888` : link.domain,
+        domain: link.domain,
         id: createId({ prefix: "link_" }),
         key,
         shortLink: linkConstructorSimple({ domain: link.domain, key }),
@@ -136,6 +138,7 @@ export async function createLink(link: ProcessedLinkProps) {
       },
     }),
   );
+  console.log("response2", response);
 
   const uploadedImageUrl = `${R2_URL}/images/${response.id}`;
 

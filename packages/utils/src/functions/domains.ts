@@ -30,7 +30,8 @@ export const generateDomainFromName = (name: string) => {
 
 // courtesy of ChatGPT: https://sharegpt.com/c/pUYXtRs
 export const validDomainRegex = new RegExp(
-  /^([a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,}$/,
+  // /^([a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,}$/,
+  /^([a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,}(:\d+)?$/,
 );
 
 export const validSlugRegex = new RegExp(/^[a-zA-Z0-9\-]+$/);
@@ -80,8 +81,11 @@ export const getDomainWithoutWWW = (url: string) => {
   } catch (e) {
     return null;
   }
-};   
+};
 
 export const isDubDomain = (domain: string) => {
+  if (domain.includes("dub.local")) {
+    domain = domain.split(":")[0];
+  }
   return DUB_DOMAINS.some((d) => d.slug === domain);
 };

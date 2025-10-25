@@ -49,16 +49,16 @@ export const authOptions: NextAuthOptions = {
   providers: [
     EmailProvider({
       sendVerificationRequest({ identifier, url }) {
-        if (process.env.NODE_ENV === "development") {
-          console.log(`Login link: ${url}`);
-          return;
-        } else {
+        // if (process.env.NODE_ENV === "development") {
+        //   console.log(`Login link: ${url}`);
+        //   return;
+        // } else {
           sendEmail({
             to: identifier,
             subject: `Your ${process.env.NEXT_PUBLIC_APP_NAME} Login Link`,
             react: LoginLink({ url, email: identifier }),
           });
-        }
+        // }
       },
     }),
     GoogleProvider({
@@ -157,7 +157,7 @@ export const authOptions: NextAuthOptions = {
 
         // Fetch user info
         const userInfo = await oauthController.userInfo(access_token);
-
+        console.log("userInfo", userInfo);
         if (!userInfo) {
           return null;
         }
@@ -165,7 +165,7 @@ export const authOptions: NextAuthOptions = {
         let existingUser = await prisma.user.findUnique({
           where: { email: userInfo.email },
         });
-
+        console.log("existingUser", existingUser);
         // user is authorized but doesn't have a Dub account, create one for them
         if (!existingUser) {
           existingUser = await prisma.user.create({
@@ -240,6 +240,7 @@ export const authOptions: NextAuthOptions = {
             emailVerified: true,
           },
         });
+        console.log("useruser", user);
 
         if (!user || !user.passwordHash) {
           throw new Error("invalid-credentials");
@@ -490,12 +491,13 @@ export const authOptions: NextAuthOptions = {
 
         // we don't allow account linking for Framer partners
         // so redirect to the standard login page
-        if (otherAccounts && otherAccounts.length > 0) {
+        if (otherAccounts && otherAccounts?.length > 0) {
           throw new Error("framer-account-linking-not-allowed");
         }
 
         return true;
       }
+      console.log("aaaaa")
       return true;
     },
     jwt: async ({
@@ -534,6 +536,7 @@ export const authOptions: NextAuthOptions = {
           return {};
         }
       }
+
 
       return token;
     },
