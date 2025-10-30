@@ -28,8 +28,7 @@ export async function GET(req: Request) {
           // exclude domains that belong to us
           notIn: [
             "dub.sh",
-            "dub.local",
-            "dub.local.com",
+            "buzz.local.com",
             "chatg.pt",
             "amzn.id",
             "spti.fi",

@@ -17,7 +17,7 @@ class StorageClient {
       secretAccessKey: process.env.STORAGE_SECRET_ACCESS_KEY || "",
       service: "s3",
       // region: "auto",
-      region: "us-east-1",
+      region: process.env.STORAGE_REGION,
     });
   }
 

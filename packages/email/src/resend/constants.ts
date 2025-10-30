@@ -9,7 +9,7 @@ export const RESEND_AUDIENCES = {
 //   marketing: "Steven from Dub.co <steven@ship.dub.co>",
 // };
 export const VARIANT_TO_FROM_MAP = {
-  primary: "Skymart <system@skymart.id.vn>",
-  notifications: "Skymart <notifications@skymart.id.vn>",
-  marketing: "Skymart <marketing@skymart.id.vn>",
+  primary: `Buzz <system@${process.env.DOMAIN_SEND_EMAIL}>`,
+  notifications: `Buzz <notifications@${process.env.DOMAIN_SEND_EMAIL}>`,
+  marketing: `Buzz <marketing@${process.env.DOMAIN_SEND_EMAIL}>`,
 };

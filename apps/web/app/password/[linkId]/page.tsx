@@ -69,6 +69,7 @@ export default async function PasswordProtectedLinkPage(props: {
       key: true,
       password: true,
       shortLink: true,
+      url: true,
       project: {
         select: {
           name: true,
@@ -82,12 +83,13 @@ export default async function PasswordProtectedLinkPage(props: {
   if (!link) {
     notFound();
   }
+  console.log("link", link);
   if (
     !link.password ||
     (await cookies()).get(`dub_password_${link.id}`)?.value === link.password
   ) {
     console.log("link.shortLink", link.shortLink);
-    redirect(link.shortLink);
+    redirect(link.url);
   }
 
   return (

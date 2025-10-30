@@ -22,8 +22,6 @@ import { toast } from "sonner";
 
 function DubDomainsIcon(domain: string) {
   switch (domain) {
-    case "dub.local":
-      return ChatGPT;
     case "chatg.pt":
       return ChatGPT;
     case "git.new":
@@ -54,7 +52,7 @@ export function DefaultDomains() {
     role,
     customPermissionDescription: "manage default domains",
   }).error;
-  console.log("DUB_DOMAINS", DUB_DOMAINS)
+  console.log("DUB_DOMAINS", DUB_DOMAINS);
   useEffect(() => {
     if (initialDefaultDomains) {
       setDefaultDomains(initialDefaultDomains);

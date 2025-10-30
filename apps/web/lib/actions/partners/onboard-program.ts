@@ -81,6 +81,7 @@ const saveOnboardingProgress = async ({
       },
     },
   });
+  console.log("data12", data)
 
   if (data.step == "save-and-exit") {
     redirect(`/${workspace.slug}/program`);

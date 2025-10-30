@@ -15,7 +15,7 @@ export function linkConstructor({
     return "";
   }
   let url;
-  if (domain.includes("dub.local")) {
+  if (domain.includes(process.env.DEFAULT_DOMAIN!)) {
     url = `http://${punycode(domain)}${key && key !== "_root" ? `/${punycode(key)}` : ""}`;
   } else {
     url = `https://${punycode(domain)}${key && key !== "_root" ? `/${punycode(key)}` : ""}`;
@@ -39,7 +39,7 @@ export function linkConstructorSimple({
   domain: string;
   key: string;
 }) {
-  if (domain.includes("dub.local")) {
+  if (domain.includes(process.env.DEFAULT_DOMAIN!)) {
     return `http://${domain}${key === "_root" ? "" : `/${key}`}`;
   } else {
     return `https://${domain}${key === "_root" ? "" : `/${key}`}`;

@@ -20,15 +20,19 @@ export const isBlacklistedDomain = async (domain: string): Promise<boolean> => {
       console.log("Domain is whitelisted", domain);
       return false;
     }
-
     const blacklistedTermsRegex = new RegExp(
       blacklistedTerms
         .map((term: string) => term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")) // replace special characters with escape sequences
         .join("|"),
     );
-
+    console.log("blacklistedTerms", blacklistedTerms)
+    console.log("blacklistedTermsRegex", blacklistedTermsRegex);
+    console.log("domain", domain);
     const isBlacklisted =
-      blacklistedDomains.includes(domain) || blacklistedTermsRegex.test(domain);
+      blacklistedDomains.includes(domain) ||
+      (blacklistedTerms.length > 0 && blacklistedTermsRegex.test(domain));
+
+    console.log("isBlacklisted", isBlacklisted);
 
     if (isBlacklisted) {
       return true;

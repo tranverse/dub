@@ -1,4 +1,9 @@
-import { DUB_WORKSPACE_ID, SHORT_DOMAIN } from "./main";
+import {
+  DEFAULT_DOMAIN,
+  DEFAULT_DOMAIN_PLACEHOLDER,
+  DUB_WORKSPACE_ID,
+  SHORT_DOMAIN,
+} from "./main";
 
 export const DUB_DOMAINS = [
   {
@@ -13,28 +18,13 @@ export const DUB_DOMAINS = [
     projectId: DUB_WORKSPACE_ID,
   },
   {
-    id: "clxp3lfsb00011na8tfs7t0l1",
-    slug: "dub.local",
-    verified: true,
-    primary: false,
-    archived: false,
-    placeholder: "http://dub.local:8888/",
-    allowedHostnames: ["localhost:8888", "dub.local:8888", "10.0.0.120:8888"],
-    description: "Local domain",
-    projectId: DUB_WORKSPACE_ID,
-  },
-  {
     id: "clxp3lfsb00011na8tfs7t0l2",
-    slug: "dub.local.com",
+    slug: DEFAULT_DOMAIN,
     verified: true,
     primary: false,
     archived: false,
-    placeholder: "http://dub.local.com:8888/",
-    allowedHostnames: [
-      // "localhost:8888",
-      // "dub.local.com:8888",
-      // "10.0.0.120:8888",
-    ],
+    placeholder: DEFAULT_DOMAIN_PLACEHOLDER,
+    allowedHostnames: [],
     description: "Local domain",
     projectId: DUB_WORKSPACE_ID,
   },
@@ -189,13 +179,7 @@ export const DUB_DEMO_LINKS = [
   },
   {
     id: "cltshzzpd0005126z3rd2lvo5",
-    domain: "dub.local",
-    key: "try",
-    dashboardId: "dash_bUNOfMQVcKS0VMDa2HaYhOjg",
-  },
-  {
-    id: "cltshzzpd0005126z3rd2lvo5",
-    domain: "dub.local.com",
+    domain: process.env.DEFAULT_DOMAIN,
     key: "try",
     dashboardId: "dash_bUNOfMQVcKS0VMDa2HaYhOjg",
   },

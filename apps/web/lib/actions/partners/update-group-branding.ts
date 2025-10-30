@@ -63,6 +63,7 @@ export const updateGroupBrandingAction = authActionClient
             .then(({ url }) => url)
         : null,
     ]);
+    console.log("logoUrl", logoUrl);
 
     const updatedGroup = await prisma.partnerGroup.update({
       where: {

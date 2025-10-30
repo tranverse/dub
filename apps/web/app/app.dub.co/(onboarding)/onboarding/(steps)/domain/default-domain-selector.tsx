@@ -19,7 +19,7 @@ export function DefaultDomainSelector() {
           step="domain/custom"
           icon="https://assets.dub.co/icons/link.webp"
           title="Connect a custom domain"
-          description="Already have a domain? Connect it to Dub in just a few clicks"
+          description="Already have a domain? Connect it to Buzz in just a few clicks"
           cta="Connect domain"
         />
         <DomainOption

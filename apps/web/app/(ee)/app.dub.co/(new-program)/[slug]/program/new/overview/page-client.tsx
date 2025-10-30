@@ -23,9 +23,11 @@ export function PageClient() {
   const { id: workspaceId, slug: workspaceSlug } = useWorkspace();
 
   const data = getValues();
-
+  console.log("data", data);
   const { executeAsync, isPending } = useAction(onboardProgramAction, {
     onError: ({ error }) => {
+      console.log("errorerror", error);
+
       toast.error(error.serverError);
     },
   });

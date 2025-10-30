@@ -57,6 +57,7 @@ export const GET = withWorkspace(
     const flags = await getFeatureFlags({
       workspaceId: workspace.id,
     });
+    console.log("flags", flags)
 
     return NextResponse.json(
       {

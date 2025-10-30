@@ -3,22 +3,17 @@
 import { getDefaultProgramIdOrThrow } from "@/lib/api/programs/get-default-program-id-or-throw";
 import { getGroupRewardsAndDiscount } from "@/lib/partners/get-group-rewards-and-discount";
 import { DEFAULT_PARTNER_GROUP } from "@/lib/zod/schemas/groups";
-import {
-  programLanderSchema,
-  programLanderSimpleSchema,
-} from "@/lib/zod/schemas/program-lander";
+import { programLanderSchema } from "@/lib/zod/schemas/program-lander";
 import { formatDiscountDescription } from "@/ui/partners/format-discount-description";
 import { formatRewardDescription } from "@/ui/partners/format-reward-description";
-import { anthropic } from "@ai-sdk/anthropic";
 import { prisma } from "@dub/prisma";
 import FireCrawlApp, {
   ErrorResponse,
   ScrapeResponse,
 } from "@mendable/firecrawl-js";
-import { generateObject } from "ai";
+import OpenAI from "openai";
 import { z } from "zod";
 import { authActionClient } from "../safe-action";
-
 const schema = z.object({
   workspaceId: z.string(),
   websiteUrl: z.string().url(),
@@ -84,48 +79,77 @@ export const generateLanderAction = authActionClient
       ? cleanMarkdown(pricingScrapeResult.markdown || "")
       : null;
 
-    const { object } = await generateObject({
-      model: anthropic("claude-sonnet-4-20250514"),
-      schema: landerData ? programLanderSchema : programLanderSimpleSchema,
-      prompt:
-        // Instructions
-        `Generate a basic landing page for an affiliate program powered by Dub Partners based on a company website. ` +
-        `For context, Dub Partners is a next-gen affiliate management platform with 1-click global payouts + white-labeling functionality. ` +
-        `Do not include any initial header/hero content because the landing page will already have an initial title and subtitle. ` +
-        `Do not make any assumptions about the terms or rewards associated with the program. ` +
-        (scrapeResult.metadata?.ogImage
-          ? `You ${landerData ? "could" : "may"} include an image block in the landing page, only using the OG image here: ${scrapeResult.metadata?.ogImage}. `
-          : "") +
-        `Do not add any file blocks. ` +
-        `If you have product pricing information, ${landerData ? "you could" : "you should"} include an earnings calculator block, using the highest non-enterprise tier for the product price. ` +
-        `Markdown is supported in "text" blocks, but use it sparingly. ` +
-        `Avoid using links. Relevant CTA links are already on the landing page. ` +
-        // Additional instructions
-        (prompt
-          ? `\n\nAdditional instructions are provided by the user. If they specify a specific action, do not do anything more than that action: "${prompt}"`
-          : "") +
-        // Program details
-        `\n\nProgram details:` +
-        `\n\nName: ${program.name}\n` +
-        `\nAffiliate rewards: ${rewards.map((reward) => formatRewardDescription({ reward })).join(", ")}` +
-        (discount
-          ? `\nDiscounts for referred users: ${formatDiscountDescription({ discount })}`
-          : "") +
-        // Existing page
-        (landerData
-          ? `\n\nThis landing page already has existing content. DO NOT update the existing content, only add new content (unless otherwise directed). ` +
-            `Absolutely do not update file or image blocks, just maintain them. Existing content:` +
-            `\n${JSON.stringify(landerData, null, 2)}`
-          : "") +
-        // Website content
-        `\n\nCompany website to base the landing page on:\n\n${mainPageMarkdown}` +
-        (pricingPageMarkdown
-          ? `\n\nCompany pricing page:\n\n${pricingPageMarkdown}`
-          : ""),
+    const openrouter = new OpenAI({
+      apiKey: process.env.OPENROUTER_API_KEY!,
+      baseURL: "https://openrouter.ai/api/v1",
+    });
+    const completion = await openrouter.chat.completions.create({
+      model: "anthropic/claude-sonnet-4",
+      messages: [
+        {
+          role: "user",
+          content:
+            //     // Instructions
+            `Generate a basic landing page for an affiliate program powered by Dub Partners based on a company website. ` +
+            `For context, Dub Partners is a next-gen affiliate management platform with 1-click global payouts + white-labeling functionality. ` +
+            `Do not include any initial header/hero content because the landing page will already have an initial title and subtitle. ` +
+            `Do not make any assumptions about the terms or rewards associated with the program. ` +
+            (scrapeResult.metadata?.ogImage
+              ? `You ${landerData ? "could" : "may"} include an image block in the landing page, only using the OG image here: ${scrapeResult.metadata?.ogImage}. `
+              : "") +
+            `Do not add any file blocks. ` +
+            `If you have product pricing information, ${landerData ? "you could" : "you should"} include an earnings calculator block, using the highest non-enterprise tier for the product price. ` +
+            `Markdown is supported in "text" blocks, but use it sparingly. ` +
+            `Avoid using links. Relevant CTA links are already on the landing page. ` +
+            // Additional instructions
+            (prompt
+              ? `\n\nAdditional instructions are provided by the user. If they specify a specific action, do not do anything more than that action: "${prompt}"`
+              : "") +
+            // Program details
+            `\n\nProgram details:` +
+            `\n\nName: ${program.name}\n` +
+            `\nAffiliate rewards: ${rewards.map((reward) => formatRewardDescription({ reward })).join(", ")}` +
+            (discount
+              ? `\nDiscounts for referred users: ${formatDiscountDescription({ discount })}`
+              : "") +
+            // Existing page
+            (landerData
+              ? `\n\nThis landing page already has existing content. DO NOT update the existing content, only add new content (unless otherwise directed). ` +
+                `Absolutely do not update file or image blocks, just maintain them. Existing content:` +
+                `\n${JSON.stringify(landerData, null, 2)}`
+              : "") +
+            // Website content
+            `\n\nCompany website to base the landing page on:\n\n${mainPageMarkdown}` +
+            (pricingPageMarkdown
+              ? `\n\nCompany pricing page:\n\n${pricingPageMarkdown}`
+              : ""),
+        },
+      ],
       temperature: 0.4,
     });
+    const rawText = completion.choices[0].message.content!;
 
-    return programLanderSchema.parse(object);
+    let object;
+    try {
+      const start = rawText.indexOf("{");
+      const end = rawText.lastIndexOf("}");
+      if (start === -1 || end === -1) throw new Error("No JSON found");
+
+      object = JSON.parse(rawText.substring(start, end + 1));
+    } catch {
+      object = {
+        blocks: [{ id: "block-0", type: "text", data: { content: rawText } }],
+      };
+    }
+
+    object.blocks = object.blocks.map((b, i) => ({
+      id: b.id || `block-${i}`,
+      ...b,
+    }));
+
+    const parsed = programLanderSchema.parse(object);
+
+    return parsed;
   });
 
 function cleanMarkdown(markdown: string) {

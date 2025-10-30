@@ -3,6 +3,11 @@ export const APP_NAME = process.env.NEXT_PUBLIC_APP_NAME || "Dub";
 export const SHORT_DOMAIN =
   process.env.NEXT_PUBLIC_APP_SHORT_DOMAIN || "dub.sh";
 
+export const DEFAULT_DOMAIN = process.env.DEFAULT_DOMAIN || "buzz.local.com";
+
+export const DEFAULT_DOMAIN_PLACEHOLDER =
+  process.env.DEFAULT_DOMAIN_PLACEHOLDER || "";
+
 export const APP_HOSTNAMES = new Set([
   `app.${process.env.NEXT_PUBLIC_APP_DOMAIN}`,
   `preview.${process.env.NEXT_PUBLIC_APP_DOMAIN}`,

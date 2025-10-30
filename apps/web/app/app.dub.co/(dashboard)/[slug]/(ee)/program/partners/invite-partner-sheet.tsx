@@ -243,16 +243,16 @@ function EmailPreview() {
           <div className="grid grid-cols-1 gap-4 p-6 pb-10">
             <BlurImage
               src={program?.logo || "https://assets.dub.co/logo.png"}
-              alt={program?.name || "Dub"}
+              alt={program?.name || "Buzz"}
               className="my-2 size-8 rounded-full"
               width={48}
               height={48}
             />
             <h3 className="font-medium text-neutral-900">
-              {program?.name || "Dub"} invited you to join Dub Partners
+              {program?.name || "Buzz"} invited you to join Buzz Partners
             </h3>
             <p className="text-sm text-neutral-500">
-              {program?.name || "Dub"} uses Dub Partners to power their
+              {program?.name || "Buzz"} uses Buzz Partners to power their
               affiliate program and wants to partner with great people like
               yourself!
             </p>
@@ -267,7 +267,7 @@ function EmailPreview() {
               <strong className="font-medium text-neutral-900">
                 Subject:{" "}
               </strong>
-              You've been invited to Dub Partners
+              You've been invited to Buzz Partners
             </p>
           </div>
         </div>

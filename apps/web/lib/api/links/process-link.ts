@@ -161,7 +161,7 @@ export async function processLink<T extends Record<string, any>>({
   if (
     domain === "dub.sh" ||
     domain === "dub.link" ||
-    domain.includes("dub.local")
+    domain.includes(process.env.DEFAULT_DOMAIN!)
   ) {
     // for dub.link: check if workspace plan is pro+
     if (domain === "dub.link" && (!workspace || workspace.plan === "free")) {

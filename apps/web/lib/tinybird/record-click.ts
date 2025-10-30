@@ -59,6 +59,7 @@ export async function recordClick({
   if (!clickId) {
     return null;
   }
+  console.log("clickId", clickId)
 
   const searchParams = new URL(req.url).searchParams;
 
@@ -158,7 +159,8 @@ export async function recordClick({
     referer: referer ? getDomainWithoutWWW(referer) || "(direct)" : "(direct)",
     referer_url: referer || "(direct)",
     trigger,
-  };
+  };  
+  console.log("clickData", clickData)
 
   if (shouldCacheClickId) {
     // cache the click ID and its corresponding click data in Redis for 5 mins
@@ -291,7 +293,7 @@ async function sendLinkClickWebhooks({
   clickData: any;
 }) {
   const webhooks = await webhookCache.mget(webhookIds);
-
+  console.log("webhooks", webhooks);
   // Couldn't find webhooks in the cache
   // TODO: Should we look them up in the database?
   if (!webhooks || webhooks.length === 0) {

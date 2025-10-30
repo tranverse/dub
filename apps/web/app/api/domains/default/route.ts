@@ -18,8 +18,7 @@ export const GET = withWorkspace(
       select: {
         dubsh: true,
         dublink: true,
-        dublocal: true,
-        dublocalcom: true,
+        buzzlocalcom: true,
         chatgpt: true,
         sptifi: true,
         gitnew: true,
@@ -75,8 +74,7 @@ export const PATCH = withWorkspace(
         projectId: workspace.id,
       },
       data: {
-        dublocal: defaultDomains.includes("dub.local"),
-        dublocalcom: defaultDomains.includes("dub.local.com"),
+        buzzlocalcom: defaultDomains.includes(process.env.DDEFAULT_DOMAIN!),
         dubsh: defaultDomains.includes("dub.sh"),
         dublink: defaultDomains.includes("dub.link"),
         chatgpt: defaultDomains.includes("chatg.pt"),

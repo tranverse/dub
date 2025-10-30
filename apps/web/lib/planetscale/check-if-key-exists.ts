@@ -12,7 +12,7 @@ export const checkIfKeyExists = async ({
   domain: string;
   key: string;
 }) => {
-  if (domain?.includes("dub.local")) {
+  if (domain?.includes(process.env.DEFAULT_DOMAIN!)) {
     domain = `${domain}:8888`;
   }
   const isCaseSensitive = isCaseSensitiveDomain(domain);

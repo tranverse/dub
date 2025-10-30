@@ -58,7 +58,7 @@ export const getBountyWithDetails = async ({
           WHERE bountyId = b.id
         ),
         JSON_ARRAY()
-      ) AS groups,
+      ) AS \`groups\`,
 
       --  Bounty submissions total count
       COALESCE(

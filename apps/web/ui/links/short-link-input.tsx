@@ -483,7 +483,7 @@ function DomainCombobox({
     modal: !link && !pathname.startsWith("/onboarding"),
   });
 
-  if (domain?.includes("dub.local")) {
+  if (domain?.includes(process.env.DEFAULT_DOMAIN!)) {
     domain = domain.split(":")[0];
   }
 

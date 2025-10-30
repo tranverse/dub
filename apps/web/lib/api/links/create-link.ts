@@ -51,7 +51,7 @@ export async function createLink(link: ProcessedLinkProps) {
     domain: link.domain,
     key,
   });
-  if (link.domain?.includes("dub.local")) {
+  if (link.domain?.includes(process.env.DEFAULT_DOMAIN!)) {
     link.domain = `${link.domain}:8888`;
   }
   const response = await withPrismaRetry(() =>

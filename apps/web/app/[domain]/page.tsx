@@ -5,7 +5,6 @@ export const revalidate = false; // cache indefinitely
 
 export async function generateMetadata(props: { params: Promise<{ domain: string }> }) {
   const params = await props.params;
-  console.log("params", params)
   const title = `${params.domain.toUpperCase()} - A ${
     process.env.NEXT_PUBLIC_APP_NAME
   } Custom Domain`;

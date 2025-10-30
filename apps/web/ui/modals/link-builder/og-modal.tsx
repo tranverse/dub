@@ -108,7 +108,9 @@ function OGModalInner({
     complete: completeTitle,
   } = useCompletion({
     api: `/api/ai/completion?workspaceId=${workspaceId}`,
+
     onError: (error) => {
+      console.log("error1", error);
       if (error.message.includes("Upgrade to Pro")) {
         toast.custom(() => (
           <UpgradeRequiredToast
@@ -121,6 +123,8 @@ function OGModalInner({
       }
     },
     onFinish: (_, completion) => {
+      console.log("error1", completion);
+
       mutate();
       posthog.capture("ai_meta_title_generated", {
         title: completion,
@@ -128,6 +132,7 @@ function OGModalInner({
       });
     },
   });
+  console.log("completionTitle", completionTitle);
 
   const generateTitle = async () => {
     completeTitle(

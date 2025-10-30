@@ -84,7 +84,7 @@ export const getDomainWithoutWWW = (url: string) => {
 };
 
 export const isDubDomain = (domain: string) => {
-  if (domain.includes("dub.local")) {
+  if (domain.includes(process.env.DEFAULT_DOMAIN!)) {
     domain = domain.split(":")[0];
   }
   return DUB_DOMAINS.some((d) => d.slug === domain);

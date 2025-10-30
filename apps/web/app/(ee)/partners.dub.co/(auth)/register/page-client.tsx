@@ -49,7 +49,7 @@ function SignUp({ program }: { program?: PartialProgram }) {
       <AuthLayout showTerms="partners">
         <div className="w-full max-w-sm">
           <h1 className="text-center text-xl font-semibold">
-            Create your Dub Partner account
+            Create your Buzz Partner account
           </h1>
           <div className="mt-8">
             <SignUpForm methods={["email", "google"]} />
@@ -67,7 +67,7 @@ function SignUp({ program }: { program?: PartialProgram }) {
           {!program && (
             <div className="mt-12 w-full">
               <AuthAlternativeBanner
-                text="Looking for your Dub workspace account?"
+                text="Looking for your Buzz workspace account?"
                 cta="Sign up at app.dub.co"
                 href="https://app.dub.co/register"
               />
