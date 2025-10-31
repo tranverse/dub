@@ -54,7 +54,7 @@ export const POST = withAxiom(async (req: Request) => {
   try {
     event = stripe.webhooks.constructEvent(buf, sig, webhookSecret);
   } catch (err: any) {
-    console.log(`❌ Error message: ${err.message}`);
+    console.log(`Error message: ${err.message}`);
     return new Response(`Webhook Error: ${err.message}`, {
       status: 400,
     });

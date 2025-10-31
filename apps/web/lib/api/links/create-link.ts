@@ -142,7 +142,6 @@ export async function createLink(link: ProcessedLinkProps) {
       },
     }),
   );
-  console.log("response2", response);
 
   const uploadedImageUrl = `${R2_URL}/images/${response.id}`;
 

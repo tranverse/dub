@@ -22,7 +22,6 @@ export async function generateFilters(prompt: string) {
       }),
     );
 
-  console.log("🧠 [generateFilters] Prompt gửi lên:", prompt);
 
   const res = await fetch("https://openrouter.ai/api/v1/chat/completions", {
     method: "POST",
@@ -44,9 +43,7 @@ export async function generateFilters(prompt: string) {
     }),
   });
 
-  console.log("📡 [generateFilters] Status:", res.status);
   const text = await res.text();
-  console.log("📦 [generateFilters] Raw response:", text);
 
   let data;
   try {
@@ -55,9 +52,8 @@ export async function generateFilters(prompt: string) {
       ? json.choices[0].message.content[0].text
       : json?.choices?.[0]?.message?.content;
 
-    console.log("💬 [generateFilters] Extracted content:", data);
   } catch (err) {
-    console.error("❌ [generateFilters] JSON parse error:", err);
+    console.error("[generateFilters] JSON parse error:", err);
     return {};
   }
 
@@ -65,20 +61,19 @@ export async function generateFilters(prompt: string) {
   let parsedData;
   try {
     parsedData = JSON.parse(data);
-    console.log("✅ [generateFilters] Parsed object:", parsedData);
+    console.log("[generateFilters] Parsed object:", parsedData);
   } catch (err) {
-    console.error("⚠️ [generateFilters] Failed to parse AI JSON:", err);
+    console.error("[generateFilters] Failed to parse AI JSON:", err);
     parsedData = {};
   }
 
   // Validate bằng schema (nếu cần)
   const validated = schema.safeParse(parsedData);
   if (!validated.success) {
-    console.warn("⚠️ [generateFilters] Schema validation failed:", validated.error);
+    console.warn("[generateFilters] Schema validation failed:", validated.error);
     return {};
   }
 
-  console.log("🎯 [generateFilters] Final filters:", validated.data);
 
   return validated.data;
 }
