@@ -51,7 +51,7 @@ export async function createLink(link: ProcessedLinkProps) {
     domain: link.domain,
     key,
   });
-  if (link.domain?.includes(process.env.DEFAULT_DOMAIN!)) {
+  if (link.domain?.includes(process.env.NEXT_PUBLIC_DEFAULT_DOMAIN!)) {
     link.domain = `${link.domain}:8888`;
   }
   const response = await withPrismaRetry(() =>
@@ -61,7 +61,11 @@ export async function createLink(link: ProcessedLinkProps) {
         domain: link.domain,
         id: createId({ prefix: "link_" }),
         key,
-        shortLink: linkConstructorSimple({ domain: link.domain, key }),
+        shortLink: linkConstructorSimple({
+          domain: link.domain,
+          key,
+          defaultDomain: process.env.NEXT_PUBLIC_DEFAULT_DOMAIN,
+        }),
         title: truncate(title, 120),
         description: truncate(description, 240),
         // if it's an uploaded image, make this null first because we'll update it later

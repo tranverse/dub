@@ -67,6 +67,7 @@ async function main() {
                 linkConstructorSimple({
                   domain: DOMAIN,
                   key: p.via,
+                  defaultDomain: process.env.NEXT_PUBLIC_DEFAULT_DOMAIN,
                 }),
               ),
             },

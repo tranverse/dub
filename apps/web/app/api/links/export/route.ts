@@ -112,7 +112,11 @@ export const GET = withWorkspace(
             ? [
                 [
                   "link",
-                  linkConstructor({ domain: link.domain, key: link.key }),
+                  linkConstructor({
+                    domain: link.domain,
+                    key: link.key,
+                    defaultDomain: process.env.NEXT_PUBLIC_DEFAULT_DOMAIN,
+                  }),
                 ] as [string, string],
               ]
             : []),

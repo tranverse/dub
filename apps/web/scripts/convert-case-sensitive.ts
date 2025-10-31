@@ -54,6 +54,7 @@ async function main() {
           shortLink: linkConstructorSimple({
             domain: link.domain,
             key: newKey,
+            defaultDomain: process.env.NEXT_PUBLIC_DEFAULT_DOMAIN,
           }),
         },
       });

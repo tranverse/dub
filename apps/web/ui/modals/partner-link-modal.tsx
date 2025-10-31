@@ -250,6 +250,7 @@ function PartnerLinkModalContent({
       linkConstructor({
         domain: shortLinkDomain,
         key,
+        defaultDomain: process.env.NEXT_PUBLIC_DEFAULT_DOMAIN,
       }),
     [shortLinkDomain, key],
   );
@@ -275,6 +276,7 @@ function PartnerLinkModalContent({
                 url: linkConstructor({
                   domain: destinationDomain,
                   key: getPathnameFromUrl(pathname),
+                  defaultDomain: process.env.NEXT_PUBLIC_DEFAULT_DOMAIN,
                 }),
               }),
             },

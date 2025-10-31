@@ -25,7 +25,7 @@ export function useLinkBuilderSubmit({
       const { user, tags, tagId, folderId, partnerId, ...rest } = data;
       if (
         props?.id &&
-        rest.domain.includes(process.env.DEFAULT_DOMAIN!) &&
+        rest.domain.includes(process.env.NEXT_PUBLIC_DEFAULT_DOMAIN!) &&
         !rest.domain.includes(":")
       ) {
         rest.domain = rest.domain + ":8888";

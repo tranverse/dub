@@ -293,6 +293,7 @@ function EarningsTableControls() {
               domain,
               key,
               pretty: true,
+              defaultDomain: process.env.NEXT_PUBLIC_DEFAULT_DOMAIN,
             }),
             data: { url },
           })) ?? null,

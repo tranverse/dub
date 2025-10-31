@@ -23,19 +23,34 @@ export default function LinkPreviewTooltip({ data }: { data: LinkProps }) {
           <div className="min-w-0 shrink grow-0 text-neutral-950">
             <div className="flex items-center gap-2">
               <a
-                href={linkConstructor({ domain, key })}
+                href={linkConstructor({
+                  domain,
+                  key,
+                  defaultDomain: process.env.NEXT_PUBLIC_DEFAULT_DOMAIN,
+                })}
                 target="_blank"
                 rel="noopener noreferrer"
-                title={linkConstructor({ domain, key, pretty: true })}
+                title={linkConstructor({
+                  domain,
+                  key,
+                  pretty: true,
+                  defaultDomain: process.env.NEXT_PUBLIC_DEFAULT_DOMAIN,
+                })}
                 className="truncate text-sm font-semibold leading-6 text-neutral-800 transition-colors hover:text-black"
               >
-                {linkConstructor({ domain, key, pretty: true })}
+                {linkConstructor({
+                  domain,
+                  key,
+                  pretty: true,
+                  defaultDomain: process.env.NEXT_PUBLIC_DEFAULT_DOMAIN,
+                })}
               </a>
               <CopyButton
                 value={linkConstructor({
                   domain,
                   key,
                   pretty: false,
+                  defaultDomain: process.env.NEXT_PUBLIC_DEFAULT_DOMAIN,
                 })}
                 variant="neutral"
                 className="p-1.5"

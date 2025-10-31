@@ -195,6 +195,7 @@ export const getAnalytics = async (params: AnalyticsFilters) => {
           shortLink: linkConstructor({
             domain: link.domain,
             key: punyEncode(link.key),
+            defaultDomain: process.env.NEXT_PUBLIC_DEFAULT_DOMAIN,
           }),
           comments: link.comments,
           title: link.title || null,

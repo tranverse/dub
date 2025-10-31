@@ -37,12 +37,10 @@ import { crawlBitly } from "./utils/crawl-bitly";
 import { isIosAppStoreUrl } from "./utils/is-ios-app-store-url";
 import { isSingularTrackingUrl } from "./utils/is-singular-tracking-url";
 import { resolveABTestURL } from "./utils/resolve-ab-test-url";
-// redirect shorten url to real url
 export default async function LinkMiddleware(
   req: NextRequest,
   ev: NextFetchEvent,
 ) {
-  console.log("reqreq", req)
   let { domain, fullKey: originalKey } = parse(req);
   console.warn("domaindomain", domain)
   if (!domain) {

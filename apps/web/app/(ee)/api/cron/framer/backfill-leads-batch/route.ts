@@ -80,6 +80,7 @@ export const POST = withWorkspace(async ({ req, workspace }) => {
                 linkConstructorSimple({
                   domain: DOMAIN,
                   key: p.via,
+                  defaultDomain: process.env.NEXT_PUBLIC_DEFAULT_DOMAIN,
                 }),
               ),
             },
@@ -364,6 +365,7 @@ export const POST = withWorkspace(async ({ req, workspace }) => {
                     linkConstructorSimple({
                       domain: DOMAIN,
                       key,
+                      defaultDomain: process.env.NEXT_PUBLIC_DEFAULT_DOMAIN,
                     }),
                   ),
                 },

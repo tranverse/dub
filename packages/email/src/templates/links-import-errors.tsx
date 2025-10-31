@@ -88,7 +88,13 @@ export default function LinksImportErrors({
                     <Row>
                       <Column align="left" className="text-sm font-medium">
                         {truncate(
-                          linkConstructor({ domain, key, pretty: true }),
+                          linkConstructor({
+                            domain,
+                            key,
+                            pretty: true,
+                            defaultDomain:
+                              process.env.NEXT_PUBLIC_DEFAULT_DOMAIN,
+                          }),
                           40,
                         )}
                       </Column>

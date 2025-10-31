@@ -45,6 +45,7 @@ export function LinkBuilderHeader({
         key,
         domain,
         pretty: true,
+        defaultDomain: process.env.NEXT_PUBLIC_DEFAULT_DOMAIN,
       }),
     [key, domain],
   );
@@ -148,7 +149,11 @@ export function LinkBuilderHeader({
 
 const getLinkOption = (link: LinkProps) => ({
   value: link.id,
-  label: linkConstructor({ ...link, pretty: true }),
+  label: linkConstructor({
+    ...link,
+    pretty: true,
+    defaultDomain: process.env.NEXT_PUBLIC_DEFAULT_DOMAIN,
+  }),
   icon: (
     <LinkLogo
       apexDomain={getApexDomain(link.url)}

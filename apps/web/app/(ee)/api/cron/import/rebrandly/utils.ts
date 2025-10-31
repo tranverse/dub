@@ -205,6 +205,7 @@ export const importLinksFromRebrandly = async ({
             shortLink: linkConstructorSimple({
               domain,
               key,
+              defaultDomain: process.env.NEXT_PUBLIC_DEFAULT_DOMAIN,
             }),
             title,
             folderId,

@@ -199,7 +199,12 @@ export function useAnalyticsFilters({
         ? [
             {
               key: "link",
-              value: linkConstructor({ domain, key, pretty: true }),
+              value: linkConstructor({
+                domain,
+                key,
+                pretty: true,
+                defaultDomain: process.env.NEXT_PUBLIC_DEFAULT_DOMAIN,
+              }),
             },
           ]
         : []),
@@ -395,13 +400,23 @@ export function useAnalyticsFilters({
     options:
       links?.map(
         ({ domain, key, url, ...rest }: LinkProps & { count?: number }) => ({
-          value: linkConstructor({ domain, key, pretty: true }),
-          label: linkConstructor({ domain, key, pretty: true }),
+          value: linkConstructor({
+            domain,
+            key,
+            pretty: true,
+            defaultDomain: process.env.NEXT_PUBLIC_DEFAULT_DOMAIN,
+          }),
+          label: linkConstructor({
+            domain,
+            key,
+            pretty: true,
+            defaultDomain: process.env.NEXT_PUBLIC_DEFAULT_DOMAIN,
+          }),
           right: getFilterOptionTotal(rest),
           data: { url },
           permalink:
             slug && !partnerPage
-              ? `/${slug}/links/${linkConstructor({ domain, key, pretty: true })}`
+              ? `/${slug}/links/${linkConstructor({ domain, key, pretty: true, defaultDomain: process.env.NEXT_PUBLIC_DEFAULT_DOMAIN })}`
               : undefined,
         }),
       ) ?? null,

@@ -95,6 +95,7 @@ export function LinkTitleColumn({ link }: { link: ResponseLink }) {
     folderId: link.folderId,
     enabled: showFolderIcon,
   });
+  console.log(process.env.NEXT_PUBLIC_DEFAULT_DOMAIN);
 
   return (
     <div
@@ -127,16 +128,30 @@ export function LinkTitleColumn({ link }: { link: ResponseLink }) {
               ) : (
                 <UnverifiedTooltip domain={domain} _key={key}>
                   <a
-                    href={linkConstructor({ domain, key })}
+                    href={linkConstructor({
+                      domain,
+                      key,
+                      defaultDomain: process.env.NEXT_PUBLIC_DEFAULT_DOMAIN,
+                    })}
                     target="_blank"
                     rel="noopener noreferrer"
-                    title={linkConstructor({ domain, key, pretty: true })}
+                    title={linkConstructor({
+                      domain,
+                      key,
+                      pretty: true,
+                      defaultDomain: process.env.NEXT_PUBLIC_DEFAULT_DOMAIN,
+                    })}
                     className={cn(
                       "font-semibold leading-6 text-neutral-800 transition-colors hover:text-black",
                       link.archived && "text-neutral-600",
                     )}
                   >
-                    {linkConstructor({ domain, key, pretty: true })}
+                    {linkConstructor({
+                      domain,
+                      key,
+                      pretty: true,
+                      defaultDomain: process.env.NEXT_PUBLIC_DEFAULT_DOMAIN,
+                    })}
                   </a>
                 </UnverifiedTooltip>
               )}
@@ -145,6 +160,7 @@ export function LinkTitleColumn({ link }: { link: ResponseLink }) {
                   domain,
                   key,
                   pretty: false,
+                  defaultDomain: process.env.NEXT_PUBLIC_DEFAULT_DOMAIN,
                 })}
                 variant="neutral"
                 className="p-1.5"
@@ -192,7 +208,13 @@ function UnverifiedTooltip({
           }
         >
           <p className="cursor-default truncate font-semibold leading-6 text-neutral-500 line-through">
-            {linkConstructor({ domain, key: _key, pretty: true })}sss
+            {linkConstructor({
+              domain,
+              key: _key,
+              pretty: true,
+              defaultDomain: process.env.NEXT_PUBLIC_DEFAULT_DOMAIN,
+            })}
+            sss
           </p>
         </Tooltip>
       ) : (
@@ -356,7 +378,7 @@ const Details = memo(
               </a>
             ) : (
               <span className="truncate text-neutral-400">
-                No URL configured sss123
+                No URL configured
               </span>
             )
           ) : (

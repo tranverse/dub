@@ -50,7 +50,13 @@ export function QRCodePreview() {
   );
 
   const shortLinkUrl = useMemo(() => {
-    return key && domain ? linkConstructor({ key, domain }) : undefined;
+    return key && domain
+      ? linkConstructor({
+          key,
+          domain,
+          defaultDomain: process.env.NEXT_PUBLIC_DEFAULT_DOMAIN,
+        })
+      : undefined;
   }, [key, domain]);
 
   const hideLogo = data.hideLogo && workspacePlan !== "free";

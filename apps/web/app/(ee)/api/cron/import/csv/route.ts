@@ -362,7 +362,12 @@ const processMappedLinks = async ({
     where: {
       projectId: workspaceId,
       shortLink: {
-        in: linksToCreate.map((link) => linkConstructorSimple(link)),
+        in: linksToCreate.map((link) =>
+          linkConstructorSimple({
+            ...link,
+            defaultDomain: process.env.NEXT_PUBLIC_DEFAULT_DOMAIN,
+          }),
+        ),
       },
     },
     select: {
@@ -374,7 +379,14 @@ const processMappedLinks = async ({
 
   linksToCreate = linksToCreate.filter(
     (link) =>
-      !existingLinks.some((l) => l.shortLink === linkConstructorSimple(link)),
+      !existingLinks.some(
+        (l) =>
+          l.shortLink ===
+          linkConstructorSimple({
+            ...link,
+            defaultDomain: process.env.NEXT_PUBLIC_DEFAULT_DOMAIN,
+          }),
+      ),
   );
 
   const workspace = await prisma.project.findUniqueOrThrow({

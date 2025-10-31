@@ -197,6 +197,7 @@ export const ShortLinkInput = forwardRef<HTMLInputElement, ShortLinkInputProps>(
         key,
         domain: domain,
         pretty: true,
+        defaultDomain: process.env.NEXT_PUBLIC_DEFAULT_DOMAIN,
       });
     }, [key, domain]);
 
@@ -332,6 +333,8 @@ export const ShortLinkInput = forwardRef<HTMLInputElement, ShortLinkInputProps>(
                             domain: "lnkd.in",
                             key: randomLinkedInNonce,
                             pretty: true,
+                            defaultDomain:
+                              process.env.NEXT_PUBLIC_DEFAULT_DOMAIN,
                           })}
                         </p>
                       </div>
@@ -483,7 +486,7 @@ function DomainCombobox({
     modal: !link && !pathname.startsWith("/onboarding"),
   });
 
-  if (domain?.includes(process.env.DEFAULT_DOMAIN!)) {
+  if (domain?.includes(process.env.NEXT_PUBLIC_DEFAULT_DOMAIN!)) {
     domain = domain.split(":")[0];
   }
 

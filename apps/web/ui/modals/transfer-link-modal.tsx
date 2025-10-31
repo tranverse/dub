@@ -64,6 +64,7 @@ function TransferLinkModalInner({
       key,
       domain,
       pretty: true,
+      defaultDomain: process.env.NEXT_PUBLIC_DEFAULT_DOMAIN,
     });
   }, [key, domain]);
 

@@ -106,7 +106,12 @@ export default function LinksImported({
                   <div key={index}>
                     <Row>
                       <Column align="left" className="text-sm font-medium">
-                        {linkConstructor({ domain, key, pretty: true })}
+                        {linkConstructor({
+                          domain,
+                          key,
+                          pretty: true,
+                          defaultDomain: process.env.NEXT_PUBLIC_DEFAULT_DOMAIN,
+                        })}
                       </Column>
                       <Column
                         align="right"

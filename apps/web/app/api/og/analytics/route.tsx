@@ -86,7 +86,12 @@ export async function GET(req: NextRequest) {
               alt="favicon"
             />
             <h1 tw="text-4xl font-bold ml-4">
-              {linkConstructor({ domain, key, pretty: true })}
+              {linkConstructor({
+                domain,
+                key,
+                pretty: true,
+                defaultDomain: process.env.NEXT_PUBLIC_DEFAULT_DOMAIN,
+              })}
             </h1>
             <svg
               xmlns="http://www.w3.org/2000/svg"

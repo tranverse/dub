@@ -75,6 +75,7 @@ export const importLinksFromShort = async ({
           shortLink: linkConstructorSimple({
             domain,
             key: path,
+            defaultDomain: process.env.NEXT_PUBLIC_DEFAULT_DOMAIN,
           }),
           title,
           ios: iphoneURL,

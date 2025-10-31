@@ -74,7 +74,9 @@ export const PATCH = withWorkspace(
         projectId: workspace.id,
       },
       data: {
-        buzzlocalcom: defaultDomains.includes(process.env.DDEFAULT_DOMAIN!),
+        buzzlocalcom: defaultDomains.includes(
+          process.env.DNEXT_PUBLIC_DEFAULT_DOMAIN!,
+        ),
         dubsh: defaultDomains.includes("dub.sh"),
         dublink: defaultDomains.includes("dub.link"),
         chatgpt: defaultDomains.includes("chatg.pt"),

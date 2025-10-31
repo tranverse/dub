@@ -100,6 +100,7 @@ export const importLinksFromBitly = async ({
         shortLink: linkConstructorSimple({
           domain,
           key,
+          defaultDomain: process.env.NEXT_PUBLIC_DEFAULT_DOMAIN,
         }),
         archived,
         createdAt,
@@ -140,6 +141,7 @@ export const importLinksFromBitly = async ({
                 shortLink: linkConstructorSimple({
                   domain: customDomain,
                   key: customKey,
+                  defaultDomain: process.env.NEXT_PUBLIC_DEFAULT_DOMAIN,
                 }),
               };
             } catch (e) {

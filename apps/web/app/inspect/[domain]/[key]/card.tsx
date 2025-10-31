@@ -22,13 +22,28 @@ export default function LinkInspectorCard({
           <div className="flex items-center space-x-1 sm:space-x-2">
             <a
               className="font-semibold text-blue-800"
-              href={linkConstructor({ domain, key })}
+              href={linkConstructor({
+                domain,
+                key,
+                defaultDomain: process.env.NEXT_PUBLIC_DEFAULT_DOMAIN,
+              })}
               target="_blank"
               rel="noreferrer"
             >
-              {linkConstructor({ domain, key, pretty: true })}
+              {linkConstructor({
+                domain,
+                key,
+                pretty: true,
+                defaultDomain: process.env.NEXT_PUBLIC_DEFAULT_DOMAIN,
+              })}
             </a>
-            <CopyButton value={linkConstructor({ domain, key })} />
+            <CopyButton
+              value={linkConstructor({
+                domain,
+                key,
+                defaultDomain: process.env.NEXT_PUBLIC_DEFAULT_DOMAIN,
+              })}
+            />
           </div>
           <a
             href={url}
@@ -44,6 +59,7 @@ export default function LinkInspectorCard({
         href={`https://dub.co/legal/abuse?link=${linkConstructor({
           domain,
           key,
+          defaultDomain: process.env.NEXT_PUBLIC_DEFAULT_DOMAIN,
         })}`}
         target="_blank"
         className="rounded-md p-2 transition-all duration-75 hover:bg-red-100 focus:outline-none active:bg-red-200"

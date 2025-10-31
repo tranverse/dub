@@ -53,6 +53,7 @@ async function main() {
       const newShortLink = linkConstructorSimple({
         domain,
         key: newKey,
+        defaultDomain: process.env.NEXT_PUBLIC_DEFAULT_DOMAIN,
       });
 
       try {

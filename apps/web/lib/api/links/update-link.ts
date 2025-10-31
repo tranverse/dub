@@ -89,6 +89,7 @@ export async function updateLink({
       shortLink: linkConstructorSimple({
         domain: updatedLink.domain,
         key,
+        defaultDomain: process.env.NEXT_PUBLIC_DEFAULT_DOMAIN,
       }),
       title: truncate(title, 120),
       description: truncate(description, 240),

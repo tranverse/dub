@@ -102,7 +102,11 @@ function LinkQRModalInner({
 
   const url = useMemo(() => {
     return props.key && props.domain
-      ? linkConstructor({ key: props.key, domain: props.domain })
+      ? linkConstructor({
+          key: props.key,
+          domain: props.domain,
+          defaultDomain: process.env.NEXT_PUBLIC_DEFAULT_DOMAIN,
+        })
       : undefined;
   }, [props.key, props.domain]);
 
@@ -520,6 +524,7 @@ function CopyPopover({
                 searchParams: {
                   qr: "1",
                 },
+                defaultDomain: process.env.NEXT_PUBLIC_DEFAULT_DOMAIN,
               })}${qrData.hideLogo ? "&hideLogo=true" : ""}`;
               toast.promise(copyUrlToClipboard(url), {
                 success: "Copied QR code URL to clipboard!",

@@ -1,7 +1,7 @@
 import {
-  DEFAULT_DOMAIN,
-  DEFAULT_DOMAIN_PLACEHOLDER,
   DUB_WORKSPACE_ID,
+  NEXT_PUBLIC_DEFAULT_DOMAIN,
+  NEXT_PUBLIC_DEFAULT_DOMAIN_PLACEHOLDER,
   SHORT_DOMAIN,
 } from "./main";
 
@@ -19,11 +19,11 @@ export const DUB_DOMAINS = [
   },
   {
     id: "clxp3lfsb00011na8tfs7t0l2",
-    slug: DEFAULT_DOMAIN,
+    slug: NEXT_PUBLIC_DEFAULT_DOMAIN,
     verified: true,
     primary: false,
     archived: false,
-    placeholder: DEFAULT_DOMAIN_PLACEHOLDER,
+    placeholder: NEXT_PUBLIC_DEFAULT_DOMAIN_PLACEHOLDER,
     allowedHostnames: [],
     description: "Local domain",
     projectId: DUB_WORKSPACE_ID,
@@ -179,7 +179,7 @@ export const DUB_DEMO_LINKS = [
   },
   {
     id: "cltshzzpd0005126z3rd2lvo5",
-    domain: process.env.DEFAULT_DOMAIN,
+    domain: process.env.NEXT_PUBLIC_DEFAULT_DOMAIN,
     key: "try",
     dashboardId: "dash_bUNOfMQVcKS0VMDa2HaYhOjg",
   },

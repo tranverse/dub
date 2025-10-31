@@ -31,6 +31,7 @@ async function main() {
               domain: link.domain,
               key: link.key,
               pretty: true,
+              defaultDomain: process.env.NEXT_PUBLIC_DEFAULT_DOMAIN,
             }),
             clicks,
           };

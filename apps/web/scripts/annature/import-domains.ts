@@ -47,7 +47,11 @@ async function main() {
       domain: d,
       key: "_root",
       url: "",
-      shortLink: linkConstructorSimple({ domain: d, key: "_root" }),
+      shortLink: linkConstructorSimple({
+        domain: d,
+        key: "_root",
+        defaultDomain: process.env.NEXT_PUBLIC_DEFAULT_DOMAIN,
+      }),
       userId,
       projectId,
     })),

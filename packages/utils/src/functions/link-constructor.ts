@@ -5,17 +5,20 @@ export function linkConstructor({
   key,
   pretty,
   searchParams,
+  defaultDomain,
 }: {
   domain?: string;
   key?: string;
   pretty?: boolean;
   searchParams?: Record<string, string>;
+  defaultDomain?: string;
 }) {
   if (!domain) {
     return "";
   }
+
   let url;
-  if (domain.includes(process.env.DEFAULT_DOMAIN!)) {
+  if (domain.includes(defaultDomain!)) {
     url = `http://${punycode(domain)}${key && key !== "_root" ? `/${punycode(key)}` : ""}`;
   } else {
     url = `https://${punycode(domain)}${key && key !== "_root" ? `/${punycode(key)}` : ""}`;
@@ -35,11 +38,13 @@ export function linkConstructor({
 export function linkConstructorSimple({
   domain,
   key,
+  defaultDomain,
 }: {
   domain: string;
   key: string;
+  defaultDomain?: string;
 }) {
-  if (domain.includes(process.env.DEFAULT_DOMAIN!)) {
+  if (domain.includes(defaultDomain!)) {
     return `http://${domain}${key === "_root" ? "" : `/${key}`}`;
   } else {
     return `https://${domain}${key === "_root" ? "" : `/${key}`}`;

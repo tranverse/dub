@@ -39,6 +39,7 @@ export async function bulkCreateLinks({
         linkConstructorSimple({
           domain: link.domain,
           key,
+          defaultDomain: process.env.NEXT_PUBLIC_DEFAULT_DOMAIN,
         }),
         index,
       ];
@@ -62,6 +63,7 @@ export async function bulkCreateLinks({
         shortLink: linkConstructorSimple({
           domain: link.domain,
           key: link.key,
+          defaultDomain: process.env.NEXT_PUBLIC_DEFAULT_DOMAIN,
         }),
         title: truncate(link.title, 120),
         description: truncate(link.description, 240),

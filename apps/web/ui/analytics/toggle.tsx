@@ -198,7 +198,11 @@ export default function Toggle({
             {dashboardProps && (
               <a
                 className="group flex items-center text-lg font-semibold text-neutral-800"
-                href={linkConstructor({ domain, key })}
+                href={linkConstructor({
+                  domain,
+                  key,
+                  defaultDomain: process.env.NEXT_PUBLIC_DEFAULT_DOMAIN,
+                })}
                 target="_blank"
                 rel="noreferrer"
               >
@@ -218,6 +222,7 @@ export default function Toggle({
                     domain,
                     key,
                     pretty: true,
+                    defaultDomain: process.env.NEXT_PUBLIC_DEFAULT_DOMAIN,
                   })}
                 </p>
                 <ExpandingArrow className="h-5 w-5" />
