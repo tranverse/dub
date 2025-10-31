@@ -9,9 +9,13 @@ import OpenAI from "openai";
 const completionSchema = z.object({
   prompt: z.string(),
   model: z
-    .enum(["claude-3-5-haiku-latest", "claude-sonnet-4-20250514"])
+    .enum([
+      "claude-3-5-haiku-latest",
+      "claude-sonnet-4-20250514",
+      "anthropic/claude-sonnet-4",
+    ])
     .optional()
-    .default("claude-sonnet-4-20250514"),
+    .default("anthropic/claude-sonnet-4"),
 });
 
 // POST /api/ai/completion – Generate AI completion
@@ -25,54 +29,23 @@ export const POST = withWorkspace(async ({ req, workspace }) => {
 
     throwIfAIUsageExceeded(workspace);
 
-    // const result = streamText({
-    //   model: anthropic(
-    //     model as "claude-3-5-haiku-latest" | "claude-sonnet-4-20250514",
-    //   ),
-    //   messages: [
-    //     {
-    //       role: "user",
-    //       content: prompt,
-    //     },
-    //   ],
-    //   maxTokens: 300,
-    // });
-
     const openai = new OpenAI({
       baseURL: "https://openrouter.ai/api/v1/chat/completions",
       apiKey: process.env.OPENROUTER_API_KEY,
     });
 
-    const stream = await openai.chat.completions.create({
-      model: "anthropic/claude-sonnet-4",
+    const completion = await openai.chat.completions.create({
+      model: model,
       messages: [
         {
           role: "user",
           content: prompt,
         },
       ],
-      stream: true,
     });
-    const encoder = new TextEncoder();
-    const readable = new ReadableStream({
-      async start(controller) {
-        try {
-          for await (const chunk of stream) {
-            const content = chunk.choices?.[0]?.delta?.content;
-            if (content) {
-              controller.enqueue(encoder.encode(`data: ${content}\n\n`));
-            }
-          }
-          controller.enqueue(encoder.encode("data: [DONE]\n\n"));
-        } catch (err) {
-          controller.error(err);
-        } finally {
-          controller.close();
-        }
-      },
-    });
+    const rawText = completion.choices[0].message.content!;
     // only count usage for the sonnet model
-    if (model === "claude-sonnet-4-20250514") {
+    if (model === "anthropic/claude-sonnet-4") {
       waitUntil(
         prismaEdge.project.update({
           where: { id: normalizeWorkspaceId(workspace.id) },
@@ -85,13 +58,7 @@ export const POST = withWorkspace(async ({ req, workspace }) => {
       );
     }
 
-    return new Response(readable, {
-      headers: {
-        "Content-Type": "text/event-stream",
-        "Cache-Control": "no-cache",
-        Connection: "keep-alive",
-      },
-    });
+    return new Response(rawText);
   } catch (error) {
     return handleAndReturnErrorResponse(error);
   }

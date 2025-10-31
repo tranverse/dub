@@ -61,7 +61,6 @@ import {
   OG_AVATAR_URL,
   REGIONS,
 } from "@dub/utils";
-import { readStreamableValue } from "ai/rsc";
 import { useParams } from "next/navigation";
 import posthog from "posthog-js";
 import {
@@ -85,6 +84,7 @@ import DeviceIcon from "./device-icon";
 import RefererIcon from "./referer-icon";
 import { TRIGGER_DISPLAY } from "./trigger-display";
 import { useAnalyticsFilterOption } from "./utils";
+import { toast } from "sonner";
 
 export function useAnalyticsFilters({
   partnerPage,
@@ -886,30 +886,48 @@ export function useAnalyticsFilters({
     ],
   );
 
+
   const onSelect = useCallback(
     async (key, value) => {
       if (key === "ai") {
         setStreaming(true);
-        const prompt = value.replace("Ask AI ", "");
-        const { object } = await generateFilters(prompt);
-        for await (const partialObject of readStreamableValue(object)) {
-          if (partialObject) {
+
+        try {
+          const prompt = value.replace("Ask AI ", "");
+          const result = await generateFilters(prompt);
+
+          let mergedFilters = { ...activeFilters };
+
+          if (result && typeof result === "object") {
+            mergedFilters = {
+              ...mergedFilters,
+              ...result,
+            };
+
+            console.log("Final AI filters:", mergedFilters);
+
             queryParams({
               set: Object.fromEntries(
-                Object.entries(partialObject).map(([key, value]) => [
+                Object.entries(mergedFilters).map(([key, value]) => [
                   key,
-                  // Convert Dates to ISO strings
                   value instanceof Date ? value.toISOString() : String(value),
                 ]),
               ),
             });
+          } else {
+            console.warn("Empty AI filters result:", result);
           }
+
+          posthog.capture("ai_filters_generated", {
+            prompt,
+            filters: mergedFilters,
+          });
+        } catch (err) {
+          console.error("Error generating filters:", err);
+          toast.error("Failed to generate filters.");
+        } finally {
+          setStreaming(false);
         }
-        posthog.capture("ai_filters_generated", {
-          prompt,
-          filters: activeFilters,
-        });
-        setStreaming(false);
       } else {
         queryParams({
           set:
@@ -930,7 +948,7 @@ export function useAnalyticsFilters({
         });
       }
     },
-    [queryParams, activeFilters, selectedTagIds],
+    [queryParams, selectedTagIds, activeFilters], 
   );
 
   const onRemove = useCallback(

@@ -52,7 +52,7 @@ export function NavWordmark({
       error: "Failed to copy to clipboard",
     });
   }
-
+//
   return (
     <Popover.Root open={isPopoverOpen} onOpenChange={setIsPopoverOpen}>
       <Popover.Anchor asChild>

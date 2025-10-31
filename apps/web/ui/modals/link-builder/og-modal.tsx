@@ -17,13 +17,11 @@ import {
 } from "@dub/ui";
 import { LoadingCircle, Magic, Unsplash } from "@dub/ui/icons";
 import { resizeImage } from "@dub/utils";
-import { useCompletion } from "ai/react";
 import posthog from "posthog-js";
 import {
   Dispatch,
   SetStateAction,
   useCallback,
-  useEffect,
   useMemo,
   useState,
 } from "react";
@@ -54,7 +52,13 @@ function OGModalInner({
   setShowOGModal: Dispatch<SetStateAction<boolean>>;
 }) {
   const { id: workspaceId, plan, exceededAI, mutate } = useWorkspace();
+  const [openUnsplashPopover, setOpenUnsplashPopover] = useState(false);
+  const [resizing, setResizing] = useState(false);
 
+  const [generatingTitle, setGeneratingTitle] = useState(false);
+  const [completionTitle, setCompletionTitle] = useState("");
+  const [generatingDescription, setGeneratingDescription] = useState(false);
+  const [completionDescription, setCompletionDescription] = useState("");
   const { generatingMetatags } = useLinkBuilderContext();
   const {
     getValues: getValuesParent,
@@ -98,111 +102,115 @@ function OGModalInner({
       }
     },
   });
+  async function fetchAICompletion({
+    workspaceId,
+    prompt,
+    model = "anthropic/claude-sonnet-4",
+  }: {
+    workspaceId: string;
+    prompt: string;
+    model?: string;
+  }) {
+    try {
+      const res = await fetch(`/api/ai/completion?workspaceId=${workspaceId}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ prompt, model }),
+      });
 
-  const [openUnsplashPopover, setOpenUnsplashPopover] = useState(false);
-  const [resizing, setResizing] = useState(false);
+      if (!res.ok) {
+        const err = await res.text();
+        throw new Error(err || "AI request failed");
+      }
 
-  const {
-    completion: completionTitle,
-    isLoading: generatingTitle,
-    complete: completeTitle,
-  } = useCompletion({
-    api: `/api/ai/completion?workspaceId=${workspaceId}`,
+      const result = await res.text();
+      return result.trim();
+    } catch (err: any) {
+      let message = err?.message ?? "Something went wrong.";
+      if (message.startsWith("Error: ")) message = message.slice(7);
 
-    onError: (error) => {
-      console.log("error1", error);
-      if (error.message.includes("Upgrade to Pro")) {
+      try {
+        const parsed = JSON.parse(message);
+        message = parsed?.error?.message ?? message;
+      } catch {}
+
+      if (message.includes("Upgrade to Pro")) {
         toast.custom(() => (
           <UpgradeRequiredToast
             title="You've exceeded your AI usage limit"
-            message={error.message}
+            message={message}
           />
         ));
       } else {
-        toast.error(error.message);
+        toast.error(message);
       }
-    },
-    onFinish: (_, completion) => {
-      console.log("error1", completion);
 
-      mutate();
-      posthog.capture("ai_meta_title_generated", {
-        title: completion,
-        url,
-      });
-    },
-  });
-  console.log("completionTitle", completionTitle);
+      throw err;
+    }
+  }
 
   const generateTitle = async () => {
-    completeTitle(
-      `You are an SEO expert. Generate an SEO-optimized meta title (max 120 characters) for the following URL:
+    if (!url) return;
+    setGeneratingTitle(true);
+
+    try {
+      const generatedTitle = await fetchAICompletion({
+        workspaceId: workspaceId!,
+        prompt: `You are an SEO expert. Generate an SEO-optimized meta title (max 120 characters) for the following URL:
       
       - URL: ${url}
       - Meta title: ${title}
-      - Meta description: ${description}. 
+      - Meta description: ${description}.
 
-      Only respond with the title without quotation marks or special characters.
-      `,
-    );
-  };
+      Only respond with the title without quotation marks or special characters.`,
+      });
 
-  useEffect(() => {
-    if (completionTitle) {
-      setValue("title", completionTitle, { shouldDirty: true });
+      setCompletionTitle(generatedTitle);
+      setValue("title", generatedTitle, { shouldDirty: true });
       if (plan && plan !== "free") {
         setValue("proxy", true, { shouldDirty: true });
       }
-    }
-  }, [completionTitle]);
-
-  const {
-    completion: completionDescription,
-    isLoading: generatingDescription,
-    complete: completeDescription,
-  } = useCompletion({
-    api: `/api/ai/completion?workspaceId=${workspaceId}`,
-    onError: (error) => {
-      if (error.message.includes("Upgrade to Pro")) {
-        toast.custom(() => (
-          <UpgradeRequiredToast
-            title="You've exceeded your AI usage limit"
-            message={error.message}
-          />
-        ));
-      } else {
-        toast.error(error.message);
-      }
-    },
-    onFinish: (_, completion) => {
       mutate();
-      posthog.capture("ai_meta_description_generated", {
-        description: completion,
+      posthog.capture("ai_meta_title_generated", {
+        title: generatedTitle,
         url,
       });
-    },
-  });
+    } finally {
+      setGeneratingTitle(false);
+    }
+  };
 
   const generateDescription = async () => {
-    completeDescription(
-      `You are an SEO expert. Generate an SEO-optimized meta description (max 240 characters) for the following URL:
+    if (!url) return;
+    setGeneratingDescription(true);
+
+    try {
+      const generatedDescription = await fetchAICompletion({
+        workspaceId: workspaceId!,
+        prompt: `You are an SEO expert. Generate an SEO-optimized meta description (max 240 characters) for the following URL:
 
       - URL: ${url}
       - Meta title: ${title}
       - Meta description: ${description}.
 
       Only respond with the description without quotation marks or special characters.`,
-    );
-  };
+      });
 
-  useEffect(() => {
-    if (completionDescription) {
-      setValue("description", completionDescription, { shouldDirty: true });
+      setCompletionDescription(generatedDescription);
+      setValue("description", generatedDescription, { shouldDirty: true });
+
       if (plan && plan !== "free") {
         setValue("proxy", true, { shouldDirty: true });
       }
+      mutate();
+      posthog.capture("ai_meta_description_generated", {
+        description: generatedDescription,
+        url,
+      });
+    } finally {
+      setGeneratingDescription(false);
     }
-  }, [completionDescription]);
+  };
 
   return (
     <>

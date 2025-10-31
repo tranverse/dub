@@ -26,14 +26,12 @@ import {
   punycode,
   truncate,
 } from "@dub/utils";
-import { useCompletion } from "ai/react";
 import { TriangleAlert } from "lucide-react";
 import { useParams, usePathname } from "next/navigation";
 import posthog from "posthog-js";
 import {
   forwardRef,
   HTMLProps,
-  useCallback,
   useEffect,
   useId,
   useMemo,
@@ -93,6 +91,7 @@ export const ShortLinkInput = forwardRef<HTMLInputElement, ShortLinkInputProps>(
 
     const [keyError, setKeyError] = useState<string | null>(null);
     const error = keyError || errorProp;
+    const [generatingAIKey, setGeneratingAIKey] = useState(false);
 
     const generateRandomKey = async () => {
       setKeyError(null);
@@ -145,52 +144,66 @@ export const ShortLinkInput = forwardRef<HTMLInputElement, ShortLinkInputProps>(
       existingLink && key ? [key] : [],
     );
 
-    const {
-      completion,
-      isLoading: generatingAIKey,
-      complete,
-    } = useCompletion({
-      api: `/api/ai/completion?workspaceId=${workspaceId}`,
-      onError: (error) => {
-        if (error.message.includes("Upgrade to Pro")) {
+    const generateAIKey = async () => {
+      if (!data.url) return;
+      setKeyError(null);
+      setGeneratingAIKey(true);
+
+      try {
+        const res = await fetch(
+          `/api/ai/completion?workspaceId=${workspaceId}`,
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              prompt: `For the following URL, suggest a relevant short link slug that is at most ${Math.max(25 - (domain?.length || 0), 12)} characters long.
+              - URL: ${data.url}
+              - Meta title: ${data.title}
+              - Meta description: ${data.description}
+
+              Only respond with the short link slug and nothing else. Don't use quotes or special characters (dash and slash are allowed).
+
+              Make sure your answer does not exist in this list of generated slugs: ${generatedKeys.join(", ")}`,
+              model: "anthropic/claude-sonnet-4",
+            }),
+          },
+        );
+
+        if (!res.ok) {
+          const err = await res.text();
+          throw new Error(err || "AI request failed");
+        }
+
+        const result = await res.text();
+        const key = result.trim();
+
+        setGeneratedKeys((prev) => [...prev, key]);
+        onChange?.({ key });
+        mutateWorkspace();
+        posthog.capture("ai_key_generated", { key, url: data.url });
+      } catch (err) {
+        let message = err?.message ?? "Something went wrong.";
+        if (message.startsWith("Error: ")) message = message.slice(7);
+
+        try {
+          const parsed = JSON.parse(message);
+          message = parsed?.error?.message ?? message;
+        } catch {}
+
+        if (message.includes("Upgrade to Pro")) {
           toast.custom(() => (
             <UpgradeRequiredToast
               title="You've exceeded your AI usage limit"
-              message={error.message}
+              message={message}
             />
           ));
         } else {
-          toast.error(error.message);
+          toast.error(message);
         }
-      },
-      onFinish: (_, completion) => {
-        setGeneratedKeys((prev) => [...prev, completion]);
-        mutateWorkspace();
-        posthog.capture("ai_key_generated", {
-          key: completion,
-          url: data.url,
-        });
-      },
-    });
-
-    useEffect(() => {
-      if (completion) onChange?.({ key: completion });
-    }, [completion]);
-
-    const generateAIKey = useCallback(async () => {
-      setKeyError(null);
-      complete(
-        `For the following URL, suggest a relevant short link slug that is at most ${Math.max(25 - (domain?.length || 0), 12)} characters long. 
-                  
-            - URL: ${data.url}
-            - Meta title: ${data.title}
-            - Meta description: ${data.description}. 
-    
-          Only respond with the short link slug and nothing else. Don't use quotation marks or special characters (dash and slash are allowed).
-          
-          Make sure your answer does not exist in this list of generated slugs: ${generatedKeys.join(", ")}`,
-      );
-    }, [data.url, data.title, data.description, generatedKeys]);
+      } finally {
+        setGeneratingAIKey(false);
+      }
+    };
 
     const shortLink = useMemo(() => {
       return linkConstructor({
