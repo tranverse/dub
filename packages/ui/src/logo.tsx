@@ -1,23 +1,26 @@
 import { cn } from "@dub/utils";
-
 export function Logo({ className }: { className?: string }) {
   return (
     <svg
+      width="64"
+      height="64"
       viewBox="0 0 64 64"
+      fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className={cn("h-10 w-10 text-black dark:text-white", className)}
     >
-      <circle cx="32" cy="32" r="32" fill="currentColor" />
+      <rect width="64" height="64" fill="none" />
       <text
-        x="32"
-        y="42"
+        x="50%"
+        y="54%"
+        dominantBaseline="middle"
         textAnchor="middle"
-        fontSize="32"
-        fontWeight="bold"
-        fill="white"
-        fontFamily="Inter, sans-serif"
+        fontFamily="Poppins, Rounded, Arial, sans-serif"
+        fontWeight="700"
+        fontSize="28"
+        fill="currentColor"
       >
-        B
+        Buzz
       </text>
     </svg>
   );

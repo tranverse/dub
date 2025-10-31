@@ -72,10 +72,13 @@ export const PARTNERS_DOMAIN_WITH_NGROK =
       ? `https://partners-staging.${process.env.NEXT_PUBLIC_APP_DOMAIN}`
       : process.env.NEXT_PUBLIC_NGROK_URL || "http://partners.localhost:8888";
 
-export const DUB_LOGO = "https://assets.dub.co/logo.png";
-export const DUB_LOGO_SQUARE = "https://assets.dub.co/logo-square.png";
+export const DUB_LOGO =
+  "https://res.cloudinary.com/dqobwpob4/image/upload/v1761904977/buzz_logo_kbsdnl.png";
+export const DUB_LOGO_SQUARE =
+  "https://res.cloudinary.com/dqobwpob4/image/upload/v1761904533/buzz_square_logo_hblk9x.png";
 export const DUB_QR_LOGO = "https://assets.dub.co/logo.png";
-export const DUB_WORDMARK = "https://assets.dub.co/wordmark.png";
+export const DUB_WORDMARK =
+  "https://res.cloudinary.com/dqobwpob4/image/upload/v1761904533/buzz_wordmark_lvccji.png";
 export const DUB_THUMBNAIL = "https://assets.dub.co/thumbnail.jpg";
 
 export const DUB_WORKSPACE_ID = "cl7pj5kq4006835rbjlt2ofka";
