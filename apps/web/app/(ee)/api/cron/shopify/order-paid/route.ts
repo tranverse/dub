@@ -36,13 +36,13 @@ export async function POST(req: Request) {
       "clickId",
     );
 
-    // clickId is empty, order is not from a Dub link
+    // clickId is empty, order is not from a Buzz link
     if (clickId === "") {
       // set key to expire in 24 hours
       await redis.expire(`shopify:checkout:${checkoutToken}`, 60 * 60 * 24);
 
       return new Response(
-        `[Shopify] Order is not from a Dub link. Skipping...`,
+        `[Shopify] Order is not from a Buzz link. Skipping...`,
       );
     }
 

@@ -248,7 +248,7 @@ export async function POST(req: Request) {
       {
         variant: "notifications",
         to: sourceEmail,
-        subject: "Your Dub partner accounts are now merged",
+        subject: "Your Buzz partner accounts are now merged",
         react: PartnerAccountMerged({
           email: sourceEmail,
           sourceEmail,
@@ -258,7 +258,7 @@ export async function POST(req: Request) {
       {
         variant: "notifications",
         to: targetEmail,
-        subject: "Your Dub partner accounts are now merged",
+        subject: "Your Buzz partner accounts are now merged",
         react: PartnerAccountMerged({
           email: targetEmail,
           sourceEmail,

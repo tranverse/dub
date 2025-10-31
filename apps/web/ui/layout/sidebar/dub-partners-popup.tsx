@@ -130,7 +130,7 @@ function DubPartnersPopupInner({
             </button>
           </div>
           <h2 className="text-content-inverted mt-4 text-sm font-semibold">
-            Dub Partners unlocked
+            Buzz Partners unlocked
           </h2>
           <p className="mt-1.5 text-xs text-neutral-300">
             Kickstart viral product-led growth with powerful, branded partner

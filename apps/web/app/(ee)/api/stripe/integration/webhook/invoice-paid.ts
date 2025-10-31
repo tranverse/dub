@@ -55,14 +55,14 @@ export async function invoicePaid(event: Stripe.Event, mode: StripeMode) {
         });
       } catch (error) {
         console.log(error);
-        return `Customer with dubCustomerExternalId ${dubCustomerExternalId} not found, skipping...`;
+        return `Customer with BuzzCustomerExternalId ${dubCustomerExternalId} not found, skipping...`;
       }
     }
   }
 
   // if customer is still not found, we skip the event
   if (!customer) {
-    return `Customer with stripeCustomerId ${stripeCustomerId} not found on Dub (nor does the connected customer ${stripeCustomerId} have a valid dubCustomerExternalId), skipping...`;
+    return `Customer with stripeCustomerId ${stripeCustomerId} not found on Buzz (nor does the connected customer ${stripeCustomerId} have a valid dubCustomerExternalId), skipping...`;
   }
 
   // Skip if invoice id is already processed

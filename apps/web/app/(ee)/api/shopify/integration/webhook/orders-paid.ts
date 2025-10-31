@@ -45,11 +45,11 @@ export async function ordersPaid({
     "clickId",
   );
 
-  // clickId is empty, order is not from a Dub link
+  // clickId is empty, order is not from a Buzz link
   if (clickId === "") {
     await redis.del(`shopify:checkout:${checkoutToken}`);
 
-    return "[Shopify] Order is not from a Dub link. Skipping...";
+    return "[Shopify] Order is not from a Buzz link. Skipping...";
   }
 
   // clickId is found, process the order for the new customer
@@ -63,7 +63,7 @@ export async function ordersPaid({
     return "[Shopify] Order event processed successfully.";
   }
 
-  // clickId is not found, we need to wait for the pixel event to come in so that we can decide if the order is from a Dub link or not
+  // clickId is not found, we need to wait for the pixel event to come in so that we can decide if the order is from a Buzz link or not
   else {
     await redis.hset(`shopify:checkout:${checkoutToken}`, {
       order: event,

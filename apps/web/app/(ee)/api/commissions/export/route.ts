@@ -170,7 +170,7 @@ export const GET = withWorkspace(async ({ searchParams, workspace }) => {
   return new Response(csvData, {
     headers: {
       "Content-Type": "text/csv",
-      "Content-Disposition": `attachment; filename="Dub Commissions Export - ${sanitizedTimestamp}.csv"`,
+      "Content-Disposition": `attachment; filename="Buzz Commissions Export - ${sanitizedTimestamp}.csv"`,
     },
   });
 });

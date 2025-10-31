@@ -50,7 +50,7 @@ export default function WorkspaceInvoicesClient() {
         <div>
           <h2 className="text-xl font-medium">Invoices</h2>
           <p className="text-balance text-sm leading-normal text-neutral-500">
-            A history of all your Dub invoices
+            A history of all your Buzz invoices
           </p>
         </div>
       </div>

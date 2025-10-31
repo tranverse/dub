@@ -48,7 +48,7 @@ export default function WebhookAdded({
             </Heading>
             <Text className="text-sm leading-6 text-black">
               Webhook with the name <strong>{webhook.name}</strong> has been
-              added to your Dub workspace {workspace.name}.
+              added to your Buzz workspace {workspace.name}.
             </Text>
             <Section className="mb-8 mt-8">
               <Link

@@ -41,7 +41,7 @@ export function PartnersUpgradeCTA({
       </div>
       <div className="max-w-sm text-pretty text-center">
         <span className="text-base font-medium text-neutral-900">
-          {title || "Dub Partners"}
+          {title || "Buzz Partners"}
         </span>
         <p className="mt-2 text-pretty text-sm text-neutral-500">
           {description || (

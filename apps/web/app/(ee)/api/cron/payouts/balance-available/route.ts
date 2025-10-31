@@ -94,8 +94,8 @@ export async function POST(req: Request) {
       {
         amount: availableBalance,
         currency,
-        // example: "Dub Partners auto-withdrawal (Aug 1, 2025)"
-        description: `Dub Partners auto-withdrawal (${formatDate(new Date(), { month: "short" })})`,
+        // example: "Buzz Partners auto-withdrawal (Aug 1, 2025)"
+        description: `Buzz Partners auto-withdrawal (${formatDate(new Date(), { month: "short" })})`,
         method: "standard",
       },
       {

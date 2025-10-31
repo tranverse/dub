@@ -150,5 +150,5 @@ export async function createNewCustomer(event: Stripe.Event) {
     ]),
   );
 
-  return `New Dub customer created: ${customer.id}. Lead event recorded: ${leadData.event_id}`;
+  return `New Buzz customer created: ${customer.id}. Lead event recorded: ${leadData.event_id}`;
 }

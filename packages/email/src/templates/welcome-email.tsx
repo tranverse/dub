@@ -25,18 +25,18 @@ export default function WelcomeEmail({
   return (
     <Html>
       <Head />
-      <Preview>Welcome to Dub</Preview>
+      <Preview>Welcome to Buzz</Preview>
       <Tailwind>
         <Body className="mx-auto my-auto bg-white font-sans">
           <Container className="mx-auto my-10 max-w-[600px] rounded border border-solid border-neutral-200 px-10 py-5">
             <Section className="mt-8">
-              <Img src={DUB_WORDMARK} height="32" alt="Dub" />
+              <Img src={DUB_WORDMARK} height="32" alt="Buzz" />
             </Section>
             <Heading className="mx-0 my-7 p-0 text-xl font-semibold text-black">
               Welcome {name || "to Dub"}!
             </Heading>
             <Text className="mb-8 text-sm leading-6 text-gray-600">
-              Thank you for signing up for Dub! You can now start creating short
+              Thank you for signing up for Buzz! You can now start creating short
               links, track conversions, and explore our API.
             </Text>
 

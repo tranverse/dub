@@ -29,7 +29,7 @@ const authSchema = z.object({
     .string()
     .min(1, "dub_workspace_id is required")
     .describe(
-      "The Singular advertiser's workspace ID on Dub (see https://d.to/id).",
+      "The Singular advertiser's workspace ID on Buzz (see https://d.to/id).",
     )
     .transform((v) => normalizeWorkspaceId(v)),
 });
@@ -70,7 +70,7 @@ export const GET = withAxiom(async (req: AxiomRequest) => {
 
     if (!supportedEvents.includes(eventName)) {
       console.error(
-        `Event ${eventName} is not supported by Singular <> Dub integration.`,
+        `Event ${eventName} is not supported by Singular <> Buzz integration.`,
       );
 
       return NextResponse.json("OK");

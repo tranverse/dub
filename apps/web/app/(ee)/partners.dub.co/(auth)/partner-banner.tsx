@@ -32,7 +32,7 @@ export function PartnerBanner({
           target="_blank"
           className="font-semibold underline-offset-2 transition-colors hover:underline"
         >
-          Dub Partners
+          Buzz Partners
         </a>{" "}
         to power their affiliate program
       </p>

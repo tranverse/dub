@@ -25,7 +25,7 @@ export async function createPayPalBatchPayout({
       recipient_type: "EMAIL",
       receiver: payout.partner.paypalEmail,
       sender_item_id: payout.id,
-      note: `Dub Partners payout (${payout.program.name})`,
+      note: `Buzz Partners payout (${payout.program.name})`,
       amount: {
         value: (payout.amount / 100).toString(),
         currency: "USD",

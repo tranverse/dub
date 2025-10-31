@@ -25,7 +25,7 @@ class DubEmbed {
    * Generates and renders all of the embed's DOM elements.
    */
   renderEmbed() {
-    console.debug("[Dub] Rendering embed.");
+    console.debug("[Buzz] Rendering embed.");
 
     const { token, root, containerStyles, onError, data } = this.options;
 
@@ -34,7 +34,7 @@ class DubEmbed {
     if (existingContainer) return existingContainer;
 
     if (!token) {
-      console.error("[Dub] A link token is required to for the embed to work.");
+      console.error("[Buzz] A link token is required to for the embed to work.");
       return null;
     }
 
@@ -58,7 +58,7 @@ class DubEmbed {
       data === "referrals" ? `${embedUrlHost}/embed/referrals` : "";
 
     if (!iframeUrl) {
-      console.error("[Dub] Invalid embed data type.");
+      console.error("[Buzz] Invalid embed data type.");
       return null;
     }
 
@@ -69,7 +69,7 @@ class DubEmbed {
     window.addEventListener("message", (e) => {
       const { data, event } = e.data as IframeMessage;
 
-      console.debug("[Dub] Iframe message", data);
+      console.debug("[Buzz] Iframe message", data);
 
       switch (event) {
         case "ERROR":

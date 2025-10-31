@@ -75,7 +75,7 @@ function ExportApplicationsModal({
       const a = document.createElement("a");
 
       a.href = url;
-      a.download = `Dub Applications Export - ${new Date().toISOString()}.csv`;
+      a.download = `Buzz Applications Export - ${new Date().toISOString()}.csv`;
       a.click();
 
       toast.success("Exported successfully");

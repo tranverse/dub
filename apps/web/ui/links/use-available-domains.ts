@@ -18,7 +18,7 @@ const sortDomains = (domains: any[], prioritySlug?: string) => {
 
 /**
  * @param {string} [options.currentDomain] The current domain of a link being updated (useful when the link's current domain has been archived)
- * @param {boolean} [options.onboarding] Whether the user is on the onboarding page (we can assume the user doesn't have any custom domains yet, so just show the Dub default domains)
+ * @param {boolean} [options.onboarding] Whether the user is on the onboarding page (we can assume the user doesn't have any custom domains yet, so just show the Buzz default domains)
  * @returns {Array} An array of available domains for creating or updating a link.
  */
 export function useAvailableDomains(
@@ -43,7 +43,7 @@ export function useAvailableDomains(
   });
 
   const domains = useMemo(() => {
-    // Case 1: Onboarding - only show non-archived Dub domains
+    // Case 1: Onboarding - only show non-archived Buzz domains
     if (options.onboarding) {
       return DUB_DOMAINS.filter((d) => !d.archived);
     }

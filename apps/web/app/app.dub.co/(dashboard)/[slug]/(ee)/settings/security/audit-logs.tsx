@@ -53,7 +53,7 @@ export function AuditLogs() {
       const a = document.createElement("a");
 
       a.href = url;
-      a.download = `Dub Audit Logs Export - ${new Date().toISOString()}.csv`;
+      a.download = `Buzz Audit Logs Export - ${new Date().toISOString()}.csv`;
       a.click();
 
       toast.success("Exported successfully");

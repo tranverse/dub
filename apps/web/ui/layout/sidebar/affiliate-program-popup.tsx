@@ -66,10 +66,10 @@ export function AffiliateProgramPopup({
             />
           </div>
           <h2 className="mt-4 text-sm font-semibold text-neutral-700">
-            New Dub Referrals
+            New Buzz Referrals
           </h2>
           <p className="mt-1.5 text-xs text-neutral-500">
-            Share your love for Dub and{" "}
+            Share your love for Buzz and{" "}
             <strong className="font-medium">
               earn 30% for each referral for up to 12 months
             </strong>

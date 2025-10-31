@@ -2,7 +2,7 @@
 
 ## Supported Versions
 
-All versions of Dub are currently being supported with security updates.
+All versions of Buzz are currently being supported with security updates.
 
 ## Reporting a Vulnerability
 

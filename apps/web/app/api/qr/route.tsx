@@ -68,7 +68,7 @@ const getQRCodeLogo = async ({
 }) => {
   const shortLink = await getShortLinkViaEdge(url.split("?")[0]);
 
-  // Not a Dub link
+  // Not a Buzz link
   if (!shortLink) {
     return DUB_QR_LOGO;
   }
@@ -91,7 +91,7 @@ const getQRCodeLogo = async ({
     return logo;
   }
 
-  // if it's a Dub owned domain and no  workspace logo is set, use the Dub logo
+  // if it's a Buzz owned domain and no  workspace logo is set, use the Buzz logo
   if (isDubDomain(shortLink.domain) && !workspace?.logo) {
     return DUB_QR_LOGO;
   }
@@ -99,7 +99,7 @@ const getQRCodeLogo = async ({
   // if it's a custom domain, check if it has a logo
   const domain = await getDomainViaEdge(shortLink.domain);
 
-  // return domain logo if it has one, otherwise fallback to workspace logo, and finally fallback to Dub logo
+  // return domain logo if it has one, otherwise fallback to workspace logo, and finally fallback to Buzz logo
   return domain?.logo || workspace?.logo || DUB_QR_LOGO;
 };
 

@@ -88,7 +88,7 @@ function ExportPartnersModal({
       const a = document.createElement("a");
 
       a.href = url;
-      a.download = `Dub Partners Export - ${new Date().toISOString()}.csv`;
+      a.download = `Buzz Partners Export - ${new Date().toISOString()}.csv`;
       a.click();
 
       toast.success("Exported successfully");

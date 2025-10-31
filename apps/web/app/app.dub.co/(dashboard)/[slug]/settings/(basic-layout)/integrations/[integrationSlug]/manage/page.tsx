@@ -12,7 +12,7 @@ export default async function IntegrationManagePage(
   }
 ) {
   const params = await props.params;
-  // this is only available for Dub workspace for now
+  // this is only available for Buzz workspace for now
   // we might open this up to other workspaces in the future
   if (params.slug !== "dub") {
     redirect(`/${params.slug}/settings/integrations`);

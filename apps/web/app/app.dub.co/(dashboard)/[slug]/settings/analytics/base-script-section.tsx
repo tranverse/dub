@@ -25,7 +25,7 @@ export function BaseScriptSection() {
         </div>
 
         <Switch
-          disabledTooltip="Required for all Dub tracking"
+          disabledTooltip="Required for all Buzz tracking"
           disabled
           checked={true}
           trackDimensions="radix-state-checked:bg-black focus-visible:ring-black/20 w-7 h-4"

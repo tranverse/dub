@@ -88,7 +88,7 @@ function ExportCommissionsModal({
       const a = document.createElement("a");
 
       a.href = url;
-      a.download = `Dub Commissions Export - ${new Date().toISOString()}.csv`;
+      a.download = `Buzz Commissions Export - ${new Date().toISOString()}.csv`;
       a.click();
 
       toast.success("Exported successfully");

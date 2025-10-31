@@ -23,12 +23,12 @@ import { workspacesPaths } from "./workspaces";
 export const document = createDocument({
   openapi: "3.0.3",
   info: {
-    title: "Dub API",
+    title: "Buzz API",
     description:
-      "Dub is the modern link attribution platform for short links, conversion tracking, and affiliate programs.",
+      "Buzz is the modern link attribution platform for short links, conversion tracking, and affiliate programs.",
     version: "0.0.1",
     contact: {
-      name: "Dub Support",
+      name: "Buzz Support",
       email: "support@dub.co",
       url: "https://dub.co/api",
     },

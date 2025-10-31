@@ -308,7 +308,7 @@ export const { POST } = serve<Payload>(
       });
     });
 
-    // Step 5: Execute Dub workflows using the “partnerEnrolled” trigger.
+    // Step 5: Execute Buzz workflows using the “partnerEnrolled” trigger.
     await context.run("execute-workflows", async () => {
       logger.info({
         message:

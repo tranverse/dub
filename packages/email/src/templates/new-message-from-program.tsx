@@ -67,7 +67,7 @@ export default function NewMessageFromProgram({
         <Body className="mx-auto my-auto bg-white font-sans">
           <Container className="mx-auto my-8 max-w-[600px] px-8 py-8">
             <Section className="mt-8">
-              <Img src={DUB_WORDMARK} height="32" alt="Dub" />
+              <Img src={DUB_WORDMARK} height="32" alt="Buzz" />
             </Section>
 
             <Section className="my-8">
@@ -90,7 +90,7 @@ export default function NewMessageFromProgram({
                     className="text-[13px] font-medium text-neutral-500 underline"
                     href={`https://partners.dub.co/programs/${program.slug}`}
                   >
-                    View program in Dub
+                    View program in Buzz
                   </Link>
                 </Section>
               </div>
@@ -141,7 +141,7 @@ export default function NewMessageFromProgram({
                 className="mt-4 block rounded-lg bg-neutral-900 px-6 py-3 text-center text-[13px] font-medium text-white no-underline"
                 href={`https://partners.dub.co/messages/${program.slug}`}
               >
-                Reply in Dub
+                Reply in Buzz
               </Link>
             </Section>
 

@@ -86,7 +86,7 @@ export const invitePartnerFromNetworkAction = authActionClient
     waitUntil(
       Promise.allSettled([
         sendEmail({
-          subject: `${program.name} invited you to join on Dub Partners`,
+          subject: `${program.name} invited you to join on Buzz Partners`,
           variant: "notifications",
           to: partner.email,
           react: PartnerInvite({

@@ -197,7 +197,7 @@ export async function GET(req: Request) {
               periodStart,
               periodEnd,
               amount: totalEarnings,
-              description: `Dub Partners payout (${program.name})`,
+              description: `Buzz Partners payout (${program.name})`,
             },
           });
           console.log(

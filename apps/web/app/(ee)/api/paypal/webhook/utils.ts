@@ -3,7 +3,7 @@ import { z } from "zod";
 export const payoutsItemSchema = z.object({
   event_type: z.string(),
   resource: z.object({
-    sender_batch_id: z.string(), // Dub invoice id
+    sender_batch_id: z.string(), // Buzz invoice id
     payout_item_id: z.string(),
     payout_item_fee: z.object({
       currency: z.string(),
@@ -11,7 +11,7 @@ export const payoutsItemSchema = z.object({
     }),
     payout_item: z.object({
       receiver: z.string(),
-      sender_item_id: z.string(), // Dub payout id
+      sender_item_id: z.string(), // Buzz payout id
     }),
     errors: z
       .object({

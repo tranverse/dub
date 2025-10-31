@@ -29,7 +29,7 @@ export async function updateCustomerWithStripeCustomerId({
       },
     });
   } catch (error) {
-    // Skip if customer not found (not an error, just a case where the customer doesn't exist on Dub yet)
+    // Skip if customer not found (not an error, just a case where the customer doesn't exist on Buzz yet)
     console.log("Failed to update customer with StripeCustomerId:", error);
     return null;
   }

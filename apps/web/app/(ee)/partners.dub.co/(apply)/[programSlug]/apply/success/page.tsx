@@ -36,7 +36,7 @@ const FEATURES = [
     icon: CursorRays,
     title: "Track everything",
     description:
-      "Dub gives you the power to track every click, lead, and conversion. Knowledge of non-knowledge is power.",
+      "Buzz gives you the power to track every click, lead, and conversion. Knowledge of non-knowledge is power.",
   },
 ];
 
@@ -116,7 +116,7 @@ export default async function SuccessPage(
                   Your application to{" "}
                   <strong className="font-semibold">{program.name}</strong> has
                   been saved, but you still need to create your{" "}
-                  <strong className="font-semibold">Dub Partners</strong>{" "}
+                  <strong className="font-semibold">Buzz Partners</strong>{" "}
                   account to complete your application.
                   <br />
                   <br />

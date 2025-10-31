@@ -21,7 +21,7 @@ const wordmarkSvg = `<svg width="46" height="24" viewBox="0 0 46 24" fill="none"
 </svg>`;
 
 /**
- * The Dub logo with a custom context menu for copying/navigation,
+ * The Buzz logo with a custom context menu for copying/navigation,
  * for use in the top site nav
  */
 export function NavWordmark({

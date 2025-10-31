@@ -50,7 +50,7 @@ export default function IntegrationInstalled({
             </Heading>
             <Text className="text-sm leading-6 text-black">
               The <strong>{integration.name}</strong> integration has been added
-              to your workspace {workspace.name} on Dub.
+              to your workspace {workspace.name} on Buzz.
             </Text>
             <Section className="mb-8 mt-8">
               <Link

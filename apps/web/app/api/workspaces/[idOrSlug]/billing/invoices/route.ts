@@ -43,7 +43,7 @@ const subscriptionInvoices = async (stripeId: string) => {
         id: invoice.id,
         total: invoice.amount_paid,
         createdAt: new Date(invoice.created * 1000),
-        description: "Dub subscription",
+        description: "Buzz subscription",
         pdfUrl: invoice.invoice_pdf,
       };
     });
@@ -82,7 +82,7 @@ const otherInvoices = async ({
     return {
       ...invoice,
       description:
-        type === "partnerPayout" ? "Dub Partner payout" : "Dub Domain renewal",
+        type === "partnerPayout" ? "Buzz Partner payout" : "Buzz Domain renewal",
       pdfUrl: `${APP_DOMAIN}/invoices/${invoice.id}`,
     };
   });

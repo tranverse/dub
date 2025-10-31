@@ -156,7 +156,7 @@ function ImportCsvModal({
         </div>
         <h3 className="text-lg font-medium">Import Links From a CSV File</h3>
         <p className="text-balance text-center text-sm text-neutral-500">
-          Easily import your links into Dub with just a few clicks.
+          Easily import your links into Buzz with just a few clicks.
           <br />
           Make sure your CSV file matches the{" "}
           <a
@@ -175,7 +175,7 @@ function ImportCsvModal({
           <div className="absolute inset-x-0 -top-6 mx-4 grid grid-cols-[1fr_min-content_1fr] items-center gap-x-4 gap-y-2 rounded-md border border-neutral-200 bg-white p-2 text-center text-sm font-medium uppercase text-neutral-600 sm:mx-12">
             <p>CSV data column</p>
             <ArrowRight className="size-4 text-neutral-500" />
-            <p>Dub data field</p>
+            <p>Buzz data field</p>
           </div>
         )}
 

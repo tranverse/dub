@@ -1,28 +1,28 @@
 {
   "id": "dub.co",
   "version": "0.0.18",
-  "name": "Dub Partners",
+  "name": "Buzz Partners",
   "icon": "./stripe-icon.png",
   "permissions": [
     {
       "permission": "customer_read",
-      "purpose": "Allows Dub to read customer information."
+      "purpose": "Allows Buzz to read customer information."
     },
     {
       "permission": "subscription_read",
-      "purpose": "Allows Dub to read subscription information."
+      "purpose": "Allows Buzz to read subscription information."
     },
     {
       "permission": "invoice_read",
-      "purpose": "Allows Dub to read invoice information."
+      "purpose": "Allows Buzz to read invoice information."
     },
     {
       "permission": "checkout_session_read",
-      "purpose": "Allows Dub to read checkout session information."
+      "purpose": "Allows Buzz to read checkout session information."
     },
     {
       "permission": "user_email_read",
-      "purpose": "Access current user's email address to identify within Dub."
+      "purpose": "Access current user's email address to identify within Buzz."
     },
     {
       "permission": "connected_account_read",
@@ -30,31 +30,31 @@
     },
     {
       "permission": "webhook_read",
-      "purpose": "Allows Dub to read webhook information."
+      "purpose": "Allows Buzz to read webhook information."
     },
     {
       "permission": "event_read",
-      "purpose": "Allows Dub to read event information."
+      "purpose": "Allows Buzz to read event information."
     },
     {
       "permission": "secret_write",
-      "purpose": "Allows storing Dub access tokens in Stripe for an account."
+      "purpose": "Allows storing Buzz access tokens in Stripe for an account."
     },
     {
       "permission": "coupon_write",
-      "purpose": "Allows Dub to create coupons for an account."
+      "purpose": "Allows Buzz to create coupons for an account."
     },
     {
       "permission": "coupon_read",
-      "purpose": "Allows Dub to read coupons for an account."
+      "purpose": "Allows Buzz to read coupons for an account."
     },
     {
       "permission": "promotion_code_write",
-      "purpose": "Allows Dub to create promotion codes for an account."
+      "purpose": "Allows Buzz to create promotion codes for an account."
     },
     {
       "permission": "promotion_code_read",
-      "purpose": "Allows Dub to read promotion codes for an account."
+      "purpose": "Allows Buzz to read promotion codes for an account."
     }
   ],
   "connect_permissions": null,

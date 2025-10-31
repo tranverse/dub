@@ -60,7 +60,7 @@ export * from "./typescript";
 // continent icons
 export * from "./continents";
 
-// dub default domains logos
+// Buzz default domains logos
 export * from "./default-domains/amazon";
 export * from "./default-domains/chatgpt";
 export * from "./default-domains/figma";

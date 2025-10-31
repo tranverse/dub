@@ -72,7 +72,7 @@ export default async function ExpiredLinkPage(props: {
             )}
           >
             <ButtonLink variant="primary" href="https://app.dub.co/register">
-              Try Dub today
+              Try Buzz today
             </ButtonLink>
             <ButtonLink
               variant="secondary"

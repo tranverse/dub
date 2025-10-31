@@ -38,7 +38,7 @@ export default function DomainDeleted({
             </Heading>
             <Text className="text-sm leading-6 text-black">
               Your domain <code className="text-purple-600">{domain}</code> for
-              your Dub workspace{" "}
+              your Buzz workspace{" "}
               <Link
                 href={`https://app.dub.co/${workspaceSlug}`}
                 className="font-medium text-blue-600 no-underline"
@@ -46,11 +46,11 @@ export default function DomainDeleted({
                 {workspaceSlug}↗
               </Link>{" "}
               has been invalid for 30 days. As a result, it has been deleted
-              from Dub.
+              from Buzz.
             </Text>
             <Text className="text-sm leading-6 text-black">
               If you would like to restore the domain, you can easily create it
-              again on Dub with the link below.
+              again on Buzz with the link below.
             </Text>
             <Section className="my-8">
               <Link
@@ -61,7 +61,7 @@ export default function DomainDeleted({
               </Link>
             </Section>
             <Text className="text-sm leading-6 text-black">
-              If you don’t plan to keep using this domain on Dub, feel free to
+              If you don’t plan to keep using this domain on Buzz, feel free to
               ignore this email.
             </Text>
             <Footer

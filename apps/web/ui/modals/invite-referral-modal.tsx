@@ -43,7 +43,7 @@ function InviteReferralModal({
         <Logo />
         <h3 className="text-lg font-medium">Invite via Email</h3>
         <p className="text-center text-sm text-neutral-500">
-          Invite a friend or colleague to use Dub with your referral link.
+          Invite a friend or colleague to use Buzz with your referral link.
         </p>
       </div>
       <form

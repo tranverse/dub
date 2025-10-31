@@ -44,7 +44,7 @@ export const createDiscountAction = authActionClient
 
     if (!workspace.stripeConnectId) {
       throw new Error(
-        "STRIPE_CONNECTION_REQUIRED: Your workspace isn't connected to Stripe yet. Please install the Dub Stripe app in settings to create discount.",
+        "STRIPE_CONNECTION_REQUIRED: Your workspace isn't connected to Stripe yet. Please install the Buzz Stripe app in settings to create discount.",
       );
     }
 
@@ -72,7 +72,7 @@ export const createDiscountAction = authActionClient
         // if there is no couponId provided, we need to create a new coupon on Stripe
       } else {
         const stripeCouponData = dubDiscountToStripeCoupon({
-          name: `Dub Discount (${truncate(group.name, 25)})`,
+          name: `Buzz Discount (${truncate(group.name, 25)})`,
           amount,
           type,
           maxDuration: maxDuration ?? null,

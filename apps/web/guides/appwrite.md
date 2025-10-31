@@ -36,8 +36,8 @@ import type { Metadata } from "next";
 import { Analytics as DubAnalytics } from "@dub/analytics/react";
 
 export const metadata: Metadata = {
-  title: "Appwrite Dub Leads Example",
-  description: "Appwrite Dub Leads Tracking example app with Next.js",
+  title: "Appwrite Buzz Leads Example",
+  description: "Appwrite Buzz Leads Tracking example app with Next.js",
 };
 
 export default function RootLayout({
@@ -98,7 +98,7 @@ export async function createAdminClient() {
 
 ## Step 5
 
-Create the Dub client and send leads to Dub using the `dub.track.lead()` function.
+Create the Buzz client and send leads to Buzz using the `dub.track.lead()` function.
 
 ```javascript
 import type { Models } from "node-appwrite";

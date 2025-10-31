@@ -116,7 +116,7 @@ export default function DubWrapped({
     {
       title: "Free .LINK domains on all paid plans",
       description:
-        "We partnered with Nova Registry to offer a <b>1-year free .link custom domain</b> to all paying Dub customers. By using a custom domain, you get <b>30% higher click-through rates</b> and better brand recognition.",
+        "We partnered with Nova Registry to offer a <b>1-year free .link custom domain</b> to all paying Buzz customers. By using a custom domain, you get <b>30% higher click-through rates</b> and better brand recognition.",
       image: "https://assets.dub.co/blog/free-dot-link.jpg",
       cta: {
         text: "Read the announcement",
@@ -134,9 +134,9 @@ export default function DubWrapped({
       },
     },
     {
-      title: "Dub API General Availability",
+      title: "Buzz API General Availability",
       description:
-        "Our Dub API went GA, allowing you to build your powerful integrations with Dub. We also launched <b>native SDKs in 5 different languages</b>: TypeScript, Python, Ruby, PHP, and Go.",
+        "Our Buzz API went GA, allowing you to build your powerful integrations with Buzz. We also launched <b>native SDKs in 5 different languages</b>: TypeScript, Python, Ruby, PHP, and Go.",
       image: "https://assets.dub.co/blog/dub-api.jpg",
       cta: {
         text: "Read the announcement",
@@ -150,17 +150,17 @@ export default function DubWrapped({
       <Head />
       <Preview>
         In 2024, you created {nFormatter(stats["Total Links"], { full: true })}{" "}
-        links on Dub and got {nFormatter(stats["Total Clicks"], { full: true })}{" "}
-        clicks.
+        links on Buzz and got{" "}
+        {nFormatter(stats["Total Clicks"], { full: true })} clicks.
       </Preview>
       <Tailwind>
         <Body className="mx-auto my-auto bg-white font-sans">
           <Container className="mx-auto my-10 max-w-[600px] rounded border border-solid border-neutral-200 px-10 py-5">
             <Section className="mt-8">
-              <Img src={DUB_WORDMARK} height="32" alt="Dub" className="my-0" />
+              <Img src={DUB_WORDMARK} height="32" alt="Buzz" className="my-0" />
             </Section>
             <Heading className="mx-0 mb-4 mt-8 p-0 text-xl font-semibold text-black">
-              Dub Year in Review 🎊
+              Buzz Year in Review 🎊
             </Heading>
             <Text className="text-sm leading-6 text-black">
               As we put a wrap on 2024, we wanted to say thank you for your
@@ -291,7 +291,7 @@ export default function DubWrapped({
               className="max-w-[200px]"
             />
             <Text className="text-sm leading-6 text-black">
-              and the Dub team 🎄
+              and the Buzz team 🎄
             </Text>
 
             <Footer email={email} marketing />

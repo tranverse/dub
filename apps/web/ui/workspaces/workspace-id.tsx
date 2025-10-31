@@ -33,7 +33,7 @@ export default function WorkspaceId() {
               target="_blank"
               className="underline underline-offset-2 transition-colors hover:text-neutral-700"
             >
-              Dub API
+              Buzz API
             </a>
             .
           </p>

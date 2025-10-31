@@ -62,11 +62,11 @@ export async function getToken({
 
     return data as Token;
   } catch (e) {
-    console.error("Unable to retrieve Dub access token:", (e as Error).message);
+    console.error("Unable to retrieve Buzz access token:", (e as Error).message);
   }
 }
 
-// Returns the user info from Dub using the access token
+// Returns the user info from Buzz using the access token
 export async function getUserInfo({ token }: { token: Token }) {
   const response = await fetch(`${DUB_API_HOST}/oauth/userinfo`, {
     headers: {
@@ -144,6 +144,6 @@ export async function refreshToken({ token }: { token: Token }) {
 
     return data as Token;
   } catch (e) {
-    console.error("Unable to refresh Dub access token:", (e as Error).message);
+    console.error("Unable to refresh Buzz access token:", (e as Error).message);
   }
 }

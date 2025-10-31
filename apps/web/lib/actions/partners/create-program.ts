@@ -262,7 +262,7 @@ async function invitePartner({
 
   waitUntil(
     sendEmail({
-      subject: `${program.name} invited you to join Dub Partners`,
+      subject: `${program.name} invited you to join Buzz Partners`,
       variant: "notifications",
       to: partner.email,
       react: PartnerInvite({

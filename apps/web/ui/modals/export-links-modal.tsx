@@ -110,7 +110,7 @@ function ExportLinksModal({
       const url = window.URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
-      a.download = `Dub Links Export - ${new Date().toISOString()}.csv`;
+      a.download = `Buzz Links Export - ${new Date().toISOString()}.csv`;
       a.click();
 
       toast.success("Exported successfully");

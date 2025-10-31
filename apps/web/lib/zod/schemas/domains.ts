@@ -98,7 +98,7 @@ export const getDomainsQuerySchema = z
 
 export const getDomainsQuerySchemaExtended = getDomainsQuerySchema.merge(
   z.object({
-    // only Dub UI uses the following query parameters
+    // only Buzz UI uses the following query parameters
     includeLink: booleanQuerySchema.default("false"),
   }),
 );

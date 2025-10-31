@@ -1,7 +1,7 @@
 import { cookies } from "next/headers";
 
 /**
- * Get the Dub product from the workspace cookie with fallback to "links"
+ * Get the Buzz product from the workspace cookie with fallback to "links"
  * @param workspace - The workspace identifier to lookup the product for
  * @returns The product ("links" or "program"), defaults to "links"
  */

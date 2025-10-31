@@ -1,5 +1,3 @@
-import { cn } from "@dub/utils";
-
 export function Wordmark({ className }: { className?: string }) {
   return (
     // <svg
@@ -17,24 +15,9 @@ export function Wordmark({ className }: { className?: string }) {
     //     fill="currentColor"
     //   />
     // </svg>
-    
-    <svg
-      viewBox="0 0 64 64"
-      xmlns="http://www.w3.org/2000/svg"
-      className={cn("h-10 w-10 text-black dark:text-white", className)}
-    >
-      <circle cx="32" cy="32" r="32" fill="currentColor" />
-      <text
-        x="32"
-        y="42"
-        textAnchor="middle"
-        fontSize="32"
-        fontWeight="bold"
-        fill="white"
-        fontFamily="Inter, sans-serif"
-      >
-        Buzz
-      </text>
-    </svg>
+
+    <div>
+      <img src="" alt="" />
+    </div>
   );
 }

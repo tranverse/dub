@@ -7,7 +7,7 @@ export async function getConfig(): Promise<DubConfig> {
 
   if (!configStore.size) {
     throw new Error(
-      "Access token not found. Please run `dub login` to authenticate with Dub.",
+      "Access token not found. Please run `Buzz login` to authenticate with Buzz.",
     );
   }
 

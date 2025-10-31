@@ -52,7 +52,7 @@ export default function ConnectPayoutReminder({
         <Body className="mx-auto my-auto bg-white font-sans">
           <Container className="mx-auto my-10 max-w-[600px] rounded border border-solid border-neutral-200 px-10 py-5">
             <Section className="mb-8 mt-6">
-              <Img src={DUB_WORDMARK} width="65" height="32" alt="dub" />
+              <Img src={DUB_WORDMARK} width="65" height="32" alt="Buzz" />
             </Section>
 
             <Heading className="mx-0 p-0 text-lg font-medium text-neutral-800">
@@ -60,7 +60,7 @@ export default function ConnectPayoutReminder({
             </Heading>
 
             <Text className="text-sm leading-6 text-neutral-600">
-              You have pending rewards on Dub Partners, but you need to{" "}
+              You have pending rewards on Buzz Partners, but you need to{" "}
               <Link
                 href="https://dub.co/help/article/receiving-payouts"
                 className="font-semibold text-black underline"
@@ -103,7 +103,7 @@ export default function ConnectPayoutReminder({
             </Section>
 
             <Text className="text-sm leading-6 text-neutral-600">
-              If you haven't already, please create a partner account on Dub
+              If you haven't already, please create a partner account on Buzz
               with your <strong className="underline">{email}</strong> email and
               set up your payout details.
             </Text>

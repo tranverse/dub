@@ -487,7 +487,7 @@ export const createPartnerSchema = z.object({
     .max(100)
     .nullish()
     .describe(
-      "The partner's unique username in your system (max 100 characters). This will be used to create a short link for the partner using your program's default domain. If not provided, Dub will try to generate a username from the partner's name or email.",
+      "The partner's unique username in your system (max 100 characters). This will be used to create a short link for the partner using your program's default domain. If not provided, Buzz will try to generate a username from the partner's name or email.",
     ),
   image: z
     .string()

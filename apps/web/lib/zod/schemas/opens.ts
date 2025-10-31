@@ -6,13 +6,13 @@ export const trackOpenRequestSchema = z
     deepLink: parseUrlSchema
       .optional()
       .describe(
-        "The deep link that brought the user to the app. If left blank, Dub will fallback to probabilistic tracking by using the `dubDomain` parameter to check if there is an associated click event for the user's IP address. Learn more: https://d.to/ddl",
+        "The deep link that brought the user to the app. If left blank, Buzz will fallback to probabilistic tracking by using the `dubDomain` parameter to check if there is an associated click event for the user's IP address. Learn more: https://d.to/ddl",
       ),
     dubDomain: z
       .string()
       .optional()
       .describe(
-        "Your deep link custom domain on Dub (e.g. `acme.link`). This is used in probabilistic tracking to check if there is an associated click event for the user's IP address. Learn more: https://d.to/ddl",
+        "Your deep link custom domain on Buzz (e.g. `acme.link`). This is used in probabilistic tracking to check if there is an associated click event for the user's IP address. Learn more: https://d.to/ddl",
       ),
   })
   .superRefine((data, ctx) => {
@@ -20,7 +20,7 @@ export const trackOpenRequestSchema = z
       ctx.addIssue({
         code: z.ZodIssueCode.custom,
         message:
-          "You need to provide either `deepLink` or `dubDomain` for deferred deep linking.",
+          "You need to provide either `deepLink` or `BuzzDomain` for deferred deep linking.",
       });
     }
   });

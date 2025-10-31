@@ -115,7 +115,7 @@ export async function notifyPartnerCommission({
     ...partnerEmailsToNotify.map(
       (email) =>
         ({
-          subject: "You just made a commission via Dub Partners!",
+          subject: "You just made a commission via Buzz Partners!",
           variant: "notifications",
           to: email,
           react: NewCommissionAlertPartner({

@@ -185,7 +185,7 @@ function PartnerPayoutSettingsSheetInner({
                     </h4>
                     <p className="text-sm font-medium text-neutral-500">
                       Set the minimum amount for funds to be automatically
-                      withdrawn from Dub into your connected payout account.
+                      withdrawn from Buzz into your connected payout account.
                     </p>
                   </div>
 

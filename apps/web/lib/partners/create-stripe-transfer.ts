@@ -104,7 +104,7 @@ export const createStripeTransfer = async ({
       // (even though the transfer could technically include payouts from multiple invoices)
       transfer_group: finalPayoutInvoiceId!,
       destination: partner.stripeConnectId,
-      description: `Dub Partners payout ${pluralize("transfer", allPayoutsPrograms.length)} (${allPayoutsPrograms.join(", ")})`,
+      description: `Buzz Partners payout ${pluralize("transfer", allPayoutsPrograms.length)} (${allPayoutsPrograms.join(", ")})`,
       // Omit `source_transaction` if prior processed payouts exist to ensure this transfer
       // never exceeds the original charge amount.
       ...(previouslyProcessedPayouts.length === 0 &&

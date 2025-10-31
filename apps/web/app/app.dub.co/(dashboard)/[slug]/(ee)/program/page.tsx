@@ -8,7 +8,7 @@ export default async function ProgramOverviewPage() {
       title="Overview"
       titleInfo={{
         title:
-          "Learn how you can use Dub Partners to create, manage, and scale your affiliate program.",
+          "Learn how you can use Buzz Partners to create, manage, and scale your affiliate program.",
         href: "https://dub.co/help/article/dub-partners",
       }}
     >

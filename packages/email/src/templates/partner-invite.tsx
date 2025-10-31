@@ -45,7 +45,7 @@ export default function PartnerInvite({
             </Section>
 
             <Heading className="mx-0 p-0 text-lg font-medium text-black">
-              {program.name} invited you to join Dub Partners
+              {program.name} invited you to join Buzz Partners
             </Heading>
 
             <Text className="text-sm leading-6 text-neutral-600">
@@ -55,7 +55,7 @@ export default function PartnerInvite({
                 target="_blank"
                 className="font-semibold text-neutral-800 underline underline-offset-2"
               >
-                Dub Partners
+                Buzz Partners
               </Link>{" "}
               to power their affiliate program and wants to partner with great
               people like yourself!

@@ -42,7 +42,7 @@ export default function PlaceholderContent() {
               "animate-slide-up-fade motion-reduce:animate-fade-in [--offset:10px] [animation-delay:200ms] [animation-duration:1s] [animation-fill-mode:both]",
             )}
           >
-            This custom domain is powered by Dub &ndash; the link management
+            This custom domain is powered by Buzz &ndash; the link management
             platform designed for modern marketing teams.
           </p>
         </div>
@@ -54,7 +54,7 @@ export default function PlaceholderContent() {
           )}
         >
           <ButtonLink variant="primary" href="https://app.dub.co/register">
-            Try Dub today
+            Try Buzz today
           </ButtonLink>
           <ButtonLink
             variant="secondary"

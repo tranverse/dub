@@ -64,11 +64,11 @@ export async function POST() {
             return {
               workspaceId: workspace.id,
               email: {
-                from: "Steven from Dub <steven@ship.dub.co>",
+                from: "Steven from Buzz <steven@ship.dub.co>",
                 to: user.email,
                 reply_to: "steven.tey@dub.co",
-                subject: "Dub Year in Review 🎊",
-                text: "Thank you for your support and here's to another year of your activity on Dub! Here's a look back at your activity in 2024.",
+                subject: "Buzz Year in Review 🎊",
+                text: "Thank you for your support and here's to another year of your activity on Buzz! Here's a look back at your activity in 2024.",
                 react: DubWrapped({
                   email: user.email,
                   workspace: {

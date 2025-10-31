@@ -122,7 +122,7 @@ export async function GET(req: Request) {
       await sendBatchEmail(
         partnerProgramsChunk.map(({ partner, programs }) => ({
           to: partner.email,
-          subject: "Connect your payout details on Dub Partners",
+          subject: "Connect your payout details on Buzz Partners",
           variant: "notifications",
           react: ConnectPayoutReminder({
             email: partner.email,

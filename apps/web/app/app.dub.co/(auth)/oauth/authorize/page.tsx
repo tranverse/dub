@@ -85,7 +85,7 @@ export default async function Authorize(
         {!integration.verified && (
           <div className="flex items-center gap-2 rounded-md bg-yellow-50 p-2 text-sm text-yellow-700">
             <CircleWarning className="size-4" />
-            <span>Dub hasn't verified this app</span>
+            <span>Buzz hasn't verified this app</span>
           </div>
         )}
       </div>

@@ -180,7 +180,7 @@ function GroupSettingsForm({ group }: { group: GroupProps }) {
               </div>
 
               <p className="mt-2 text-xs text-neutral-500">
-                For setting up the Dub embedded referral dashboard within your
+                For setting up the Buzz embedded referral dashboard within your
                 app.{" "}
                 <Link
                   href="https://dub.co/docs/partners/embedded-referrals"

@@ -126,7 +126,7 @@ export const PLANS = [
         text: "Link folders",
         tooltip: {
           title:
-            "Organize and manage access to your links on Dub using folders.",
+            "Organize and manage access to your links on Buzz using folders.",
           cta: "Learn more.",
           href: "https://dub.co/help/article/link-folders",
         },
@@ -206,7 +206,7 @@ export const PLANS = [
         id: "partners",
         text: "Partner management",
         tooltip: {
-          title: "Use Dub Partners to manage and pay out your affiliates.",
+          title: "Use Buzz Partners to manage and pay out your affiliates.",
           cta: "Learn more.",
           href: "https://dub.co/partners",
         },

@@ -59,7 +59,7 @@ export default async function LoginPage(props: {
       <AuthLayout showTerms="partners">
         <div className="w-full max-w-sm">
           <h1 className="text-center text-xl font-semibold">
-            Log in to your Dub Partner account
+            Log in to your Buzz Partner account
           </h1>
           <div className="mt-8">
             <LoginForm
@@ -80,7 +80,7 @@ export default async function LoginPage(props: {
           {!programSlug && (
             <div className="mt-12 w-full">
               <AuthAlternativeBanner
-                text="Looking for your Dub workspace account?"
+                text="Looking for your Buzz workspace account?"
                 cta="Log in at app.dub.co"
                 href="https://app.dub.co/login"
               />

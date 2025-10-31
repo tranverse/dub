@@ -7,7 +7,7 @@ export const HUBSPOT_DEFAULT_CLOSED_WON_DEAL_STAGE_ID = "closedwon";
 
 export const HUBSPOT_DUB_CONTACT_PROPERTIES = [
   {
-    label: "Dub Click ID",
+    label: "Buzz Click ID",
     name: "dub_id",
     type: "string",
     fieldType: "text",
@@ -15,14 +15,14 @@ export const HUBSPOT_DUB_CONTACT_PROPERTIES = [
     formField: true, // Allow the property to be used in a HubSpot form.
   },
   {
-    label: "Dub Link",
+    label: "Buzz Link",
     name: "dub_link",
     type: "string",
     fieldType: "text",
     groupName: "contactinformation",
   },
   {
-    label: "Dub Partner Email",
+    label: "Buzz Partner Email",
     name: "dub_partner_email",
     type: "string",
     fieldType: "text",

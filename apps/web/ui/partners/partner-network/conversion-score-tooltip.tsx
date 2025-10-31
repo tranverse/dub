@@ -49,7 +49,7 @@ export function ConversionScoreTooltip({
                     ))}
                   </div>
                   <p className="text-content-subtle mt-4 font-medium">
-                    This score is an average for all Dub programs the partner is
+                    This score is an average for all Buzz programs the partner is
                     enrolled in.
                   </p>
                 </div>

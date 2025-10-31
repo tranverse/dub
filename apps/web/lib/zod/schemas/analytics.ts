@@ -84,7 +84,7 @@ export const analyticsQuerySchema = z
       .string()
       .optional()
       .describe(
-        "The unique ID of the short link on Dub to retrieve analytics for.",
+        "The unique ID of the short link on Buzz to retrieve analytics for.",
       ),
     // TODO: Add this to the public API when we can properly verify linkIds ownership in /api/analytics
     // linkIds: z

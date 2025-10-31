@@ -71,7 +71,7 @@ export default async function InspectPage(
             Link Inspector
           </h1>
           <h2 className="text-lg text-neutral-600 sm:text-xl">
-            Inspect a short link on Dub to make sure it's safe to click on. If
+            Inspect a short link on Buzz to make sure it's safe to click on. If
             you think this link is malicious, please report it.
           </h2>
 

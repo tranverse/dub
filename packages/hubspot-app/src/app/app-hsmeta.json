@@ -2,8 +2,8 @@
   "uid": "dub",
   "type": "app",
   "config": {
-    "description": "Track Hubspot leads/deal changes and auto-generate partner commissions on Dub – the modern affiliate platform & partner network built for SaaS.",
-    "name": "Dub Partners",
+    "description": "Track Hubspot leads/deal changes and auto-generate partner commissions on Buzz – the modern affiliate platform & partner network built for SaaS.",
+    "name": "Buzz Partners",
     "distribution": "marketplace",
     "auth": {
       "type": "oauth",

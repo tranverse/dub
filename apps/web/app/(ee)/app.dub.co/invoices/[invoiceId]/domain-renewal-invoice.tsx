@@ -92,7 +92,7 @@ export async function DomainRenewalInvoice({
     {
       title: "From",
       address: {
-        name: "Dub Technologies, Inc.",
+        name: "Buzz Technologies, Inc.",
         line1: "2261 Market Street STE 5906",
         city: "San Francisco",
         state: "CA",
@@ -123,7 +123,7 @@ export async function DomainRenewalInvoice({
           <Image src={DUB_WORDMARK} style={tw("w-20 h-10")} />
           <View style={tw("text-right w-1/2")}>
             <Text style={tw("text-sm font-medium text-neutral-800")}>
-              Dub Technologies Inc.
+              Buzz Technologies Inc.
             </Text>
             <Text style={tw("text-sm text-neutral-500 ")}>support@dub.co</Text>
           </View>

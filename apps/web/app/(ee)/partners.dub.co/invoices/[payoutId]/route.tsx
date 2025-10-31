@@ -166,7 +166,7 @@ export const GET = withPartnerProfile(async ({ partner, params }) => {
           <Image src={DUB_WORDMARK} style={tw("w-20 h-10 mb-2")} />
           <View style={tw("text-right")}>
             <Text style={tw("text-sm font-medium text-neutral-800 leading-6")}>
-              Dub Technologies INC
+              Buzz Technologies INC
             </Text>
             <Text style={tw("text-sm text-neutral-500 leading-6")}>
               2261 Market Street STE 5906

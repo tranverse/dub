@@ -36,10 +36,10 @@ export async function customerCreated(event: Stripe.Event) {
         },
       });
 
-      return `Dub customer with ID ${customer.id} updated with Stripe customer ID ${stripeCustomer.id}`;
+      return `Buzz customer with ID ${customer.id} updated with Stripe customer ID ${stripeCustomer.id}`;
     } catch (error) {
       console.error(error);
-      return `Error updating Dub customer with ID ${customer.id}: ${error}`;
+      return `Error updating Buzz customer with ID ${customer.id}: ${error}`;
     }
   }
 

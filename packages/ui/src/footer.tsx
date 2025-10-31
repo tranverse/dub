@@ -47,14 +47,14 @@ const socials = [
 
 const navigation = {
   product: [
-    ...FEATURES_LIST.filter(({ title }) => title !== "Dub Integrations").map(
+    ...FEATURES_LIST.filter(({ title }) => title !== "Buzz Integrations").map(
       ({ id, title, href }) => ({
         id,
         name: title,
         href,
       }),
     ),
-    { id: null, name: "Dub Enterprise", href: "/enterprise" },
+    { id: null, name: "Buzz Enterprise", href: "/enterprise" },
   ],
   solutions: [
     { name: "Marketing attribution", href: "/analytics" },
@@ -335,7 +335,7 @@ export function Footer({
             />
           </Link>
           <p className="text-xs text-neutral-500 sm:text-right">
-            © {new Date().getFullYear()} Dub Technologies, Inc.
+            © {new Date().getFullYear()} Buzz Technologies, Inc.
           </p>
         </div>
       </footer>

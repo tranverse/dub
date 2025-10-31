@@ -34,7 +34,7 @@ export async function GET(req: NextRequest) {
     return NextResponse.json(
       {
         ...metatags,
-        poweredBy: "Dub - The Modern Link Attribution Platform",
+        poweredBy: "Buzz - The Modern Link Attribution Platform",
       },
       {
         headers: corsHeaders,

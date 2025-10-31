@@ -55,7 +55,7 @@ export const RequestSetPassword = () => {
               .{" "}
             </>
           )}
-          You can set a password to use with your Dub account.
+          You can set a password to use with your Buzz account.
         </p>
       </div>
       <div className="p-5 sm:p-10">

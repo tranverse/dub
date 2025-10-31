@@ -764,7 +764,7 @@ export const getLinkInfoQuerySchema = domainKeySchema.partial().merge(
 
 export const getLinksQuerySchemaExtended = getLinksQuerySchemaBase.merge(
   z.object({
-    // Only Dub UI uses the following query parameters
+    // Only Buzz UI uses the following query parameters
     includeUser: booleanQuerySchema.default("false"),
     includeWebhooks: booleanQuerySchema.default("false"),
     includeDashboard: booleanQuerySchema.default("false"),

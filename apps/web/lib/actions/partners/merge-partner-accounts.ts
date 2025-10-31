@@ -174,7 +174,7 @@ const sendTokens = async ({
     {
       variant: "notifications",
       to: sourceEmail,
-      subject: "Verify your email to merge your Dub Partners accounts",
+      subject: "Verify your email to merge your Buzz Partners accounts",
       react: VerifyEmailForAccountMerge({
         email: sourceEmail,
         code: sourceEmailCode,
@@ -184,7 +184,7 @@ const sendTokens = async ({
     {
       variant: "notifications",
       to: targetEmail,
-      subject: "Verify your email to merge your Dub Partners accounts",
+      subject: "Verify your email to merge your Buzz Partners accounts",
       react: VerifyEmailForAccountMerge({
         email: targetEmail,
         code: targetEmailCode,
