@@ -19,7 +19,7 @@ export const AuthLayout = ({
       <div className="flex grow basis-0 flex-col justify-end">
         {showTerms && (
           <p className="px-20 py-8 text-center text-xs font-medium text-neutral-500 md:px-0">
-            By continuing, you agree to Dub&rsquo;s{" "}
+            By continuing, you agree to Buzz&rsquo;s{" "}
             <a
               href={`https://dub.co/legal/${showTerms === "app" ? "terms" : "partners"}`}
               target="_blank"
