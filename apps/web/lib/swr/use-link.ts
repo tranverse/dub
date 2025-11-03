@@ -8,7 +8,11 @@ export default function useLink(
   swrOptions?: SWRConfiguration,
 ) {
   const { id: workspaceId } = useWorkspace();
-  const decodedDomain = decodeURIComponent(linkIdOrLink.domain);
+  let decodedDomain: string | undefined;
+  if (typeof linkIdOrLink !== "string") {
+    decodedDomain = decodeURIComponent(linkIdOrLink.domain);
+  }
+
   const { data: link, error } = useSWR<ExpandedLinkProps>(
     workspaceId &&
       linkIdOrLink &&
@@ -16,7 +20,7 @@ export default function useLink(
         ? `/api/links/${linkIdOrLink}?workspaceId=${workspaceId}`
         : `/api/links/info?${new URLSearchParams({
             workspaceId,
-            domain: decodedDomain,
+            domain: decodedDomain!,
             key: linkIdOrLink.slug,
             includeUser: "true",
             includeWebhooks: "true",

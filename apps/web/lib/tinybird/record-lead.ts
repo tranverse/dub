@@ -3,13 +3,13 @@ import { z } from "zod";
 import { leadEventSchemaTB } from "../zod/schemas/leads";
 import { tb, tbNew } from "./client";
 
-export const recordLeadTB = tb.buildIngestEndpoint({
+export const recordLeadTB = (tb as any).buildIngestEndpoint({
   datasource: "dub_lead_events",
   event: leadEventSchemaTB,
 });
 
 // TODO: Remove after Tinybird migration
-export const recordLeadTBNew = tbNew.buildIngestEndpoint({
+export const recordLeadTBNew = (tbNew as any).buildIngestEndpoint({
   datasource: "dub_lead_events",
   event: leadEventSchemaTB,
 });
@@ -19,14 +19,14 @@ export const recordLead = async (payload: any) => {
   return await recordLeadTB(payload);
 };
 
-export const recordLeadWithTimestampTB = tb.buildIngestEndpoint({
+export const recordLeadWithTimestampTB = (tb as any).buildIngestEndpoint({
   datasource: "dub_lead_events",
   event: leadEventSchemaTB.extend({
     timestamp: z.string(),
   }),
 });
 
-export const recordLeadWithTimestampTBNew = tbNew.buildIngestEndpoint({
+export const recordLeadWithTimestampTBNew = (tbNew as any).buildIngestEndpoint({
   datasource: "dub_lead_events",
   event: leadEventSchemaTB.extend({
     timestamp: z.string(),

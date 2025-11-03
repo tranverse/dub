@@ -1,10 +1,12 @@
 import { z } from "zod";
 import { tb } from "./client";
 
-const pipe = tb.buildPipe({
+// Cast `tb` to `any` here for the same reason as other callers: avoid
+// TypeScript errors when different zod compile-time instances are present.
+const pipe = (tb as any).buildPipe({
   pipe: "v2_customer_events",
-  parameters: z.any(), // TODO
-  data: z.any(), // TODO
+  parameters: z.unknown(), // TODO
+  data: z.unknown(), // TODO
 });
 
 export const getCustomerEventsTB = async ({

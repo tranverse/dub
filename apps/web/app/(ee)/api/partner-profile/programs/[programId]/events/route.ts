@@ -63,12 +63,9 @@ export const GET = withPartnerProfile(
         ...eventRest,
         click: clickRest,
         link: event?.link ? PartnerProfileLinkSchema.parse(event.link) : null,
-        // @ts-expect-error - customer is not always present
-        ...(event?.customer && {
-          customer: CustomerSchema
-            // @ts-expect-error - customer is not always present
-            .parse(event.customer),
-        }),
+        ...(event?.customer
+          ? { customer: CustomerSchema.parse(event.customer) }
+          : {}),
       };
     });
 

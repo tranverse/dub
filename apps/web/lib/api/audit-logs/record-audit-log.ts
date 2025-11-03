@@ -73,14 +73,14 @@ export const recordAuditLog = async (data: AuditLogInput | AuditLogInput[]) => {
   }
 };
 
-const recordAuditLogTB = tb.buildIngestEndpoint({
+const recordAuditLogTB = (tb as any).buildIngestEndpoint({
   datasource: "dub_audit_logs",
   event: auditLogSchemaTB,
   wait: true,
 });
 
 // TODO: Remove after Tinybird migration
-const recordAuditLogTBNew = tbNew.buildIngestEndpoint({
+const recordAuditLogTBNew = (tbNew as any).buildIngestEndpoint({
   datasource: "dub_audit_logs",
   event: auditLogSchemaTB,
   wait: true,

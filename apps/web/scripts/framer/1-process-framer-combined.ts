@@ -11,7 +11,7 @@ import z from "../../lib/zod";
   (script 1 of 3 for Framer backfill)
 */
 
-const getFramerLeadEvents = tb.buildPipe({
+const getFramerLeadEvents = (tb as any).buildPipe({
   pipe: "get_framer_lead_events",
   parameters: z.object({
     linkIds: z
@@ -81,7 +81,7 @@ async function processFramerData(linkToBackfill: {
         const customers = await prisma.customer.findMany({
           where: {
             id: {
-              in: Array.from(customerIdsSet),
+              in: Array.from(customerIdsSet) as string[],
             },
           },
           select: {

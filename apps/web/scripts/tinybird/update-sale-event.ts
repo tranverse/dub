@@ -3,7 +3,7 @@ import "dotenv-flow/config";
 import { tb } from "../../lib/tinybird/client";
 import { recordSaleWithTimestamp } from "../../lib/tinybird/record-sale";
 
-const getSaleEvent = tb.buildPipe({
+const getSaleEvent = (tb as any).buildPipe({
   pipe: "get_sale_event",
   parameters: z.object({
     eventId: z.string(),

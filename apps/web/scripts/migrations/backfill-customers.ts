@@ -5,7 +5,7 @@ import { tb } from "../../lib/tinybird/client";
 import { getLeadEvents } from "../../lib/tinybird/get-lead-events";
 import z from "../../lib/zod";
 
-export const getClickEvents = tb.buildPipe({
+export const getClickEvents = (tb as any).buildPipe({
   pipe: "get_click_events",
   parameters: z.object({
     clickIds: z.array(z.string()),

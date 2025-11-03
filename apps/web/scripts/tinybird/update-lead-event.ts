@@ -3,7 +3,7 @@ import "dotenv-flow/config";
 import { tb } from "../../lib/tinybird/client";
 import { recordLeadWithTimestamp } from "../../lib/tinybird/record-lead";
 
-const getLeadEvent = tb.buildPipe({
+const getLeadEvent = (tb as any).buildPipe({
   pipe: "get_lead_event_by_id",
   parameters: z.object({
     eventId: z.string(),

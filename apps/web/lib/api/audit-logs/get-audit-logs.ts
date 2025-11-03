@@ -34,7 +34,7 @@ export const getAuditLogs = async ({
   workspaceId: string;
   programId: string;
 }) => {
-  const pipe = tb.buildPipe({
+  const pipe = (tb as any).buildPipe({
     pipe: "get_audit_logs",
     parameters: auditLogFilterSchemaTB,
     data: auditLogResponseSchemaTB,

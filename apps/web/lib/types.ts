@@ -201,7 +201,7 @@ export type BetaFeatures =
 export interface WorkspaceProps extends Project {
   logo: string | null;
   // plan: PlanProps;
-  plan: "enterprise";
+  plan: PlanProps;
   domains: {
     slug: string;
     primary: boolean;

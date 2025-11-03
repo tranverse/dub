@@ -10,7 +10,11 @@ export async function getTopProgramsBySales({
   startDate: Date;
   endDate: Date;
 }) {
-  const pipe = tb.buildPipe({
+  // Cast `tb` to `any` to avoid TypeScript errors caused by multiple zod
+  // instances (different compiled copies) being present in the project.
+  // This keeps runtime behavior identical while avoiding brittle type
+  // incompatibilities between package builds.
+  const pipe = (tb as any).buildPipe({
     pipe: "v2_top_programs",
     parameters: z.any(),
     data: z.any(),

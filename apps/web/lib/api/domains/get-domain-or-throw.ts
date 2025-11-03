@@ -19,13 +19,12 @@ export const getDomainOrThrow = async ({
       registeredDomain: true,
     },
   });
-
-  // if (!domainRecord) {
-  //   throw new DubApiError({
-  //     code: "not_found",
-  //     message: `Domain ${domain} not found.`,
-  //   });
-  // }
+  if (!domainRecord) {
+    throw new DubApiError({
+      code: "not_found",
+      message: `Domain ${domain} not found.`,
+    });
+  }
 
   /* if domain is defined:
       - it's a dub domain:

@@ -2,7 +2,7 @@ import z from "../zod";
 import { leadEventSchemaTB } from "../zod/schemas/leads";
 import { tb } from "./client";
 
-export const getLeadEvent = tb.buildPipe({
+export const getLeadEvent = (tb as any).buildPipe({
   pipe: "get_lead_event",
   parameters: z.object({
     customerId: z.string(),

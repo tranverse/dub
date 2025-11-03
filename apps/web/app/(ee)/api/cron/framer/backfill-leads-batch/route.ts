@@ -39,7 +39,7 @@ const FRAMER_WORKSPACE_ID = "clsvopiw0000ejy0grp821me0";
 const CACHE_KEY = "framerMigratedExternalIdEventNames";
 const DOMAIN = "framer.link";
 
-const getFramerLeadEvents = tb.buildPipe({
+const getFramerLeadEvents = (tb as any).buildPipe({
   pipe: "get_framer_lead_events",
   parameters: z.object({
     linkIds: z

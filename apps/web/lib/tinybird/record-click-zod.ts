@@ -34,14 +34,14 @@ export const recordClickZodSchema = z.object({
   trigger: z.string().default("link"),
 });
 
-export const recordClickZodTB = tb.buildIngestEndpoint({
+export const recordClickZodTB = (tb as any).buildIngestEndpoint({
   datasource: "dub_click_events",
   event: recordClickZodSchema,
   wait: true,
 });
 
 // TODO: Remove after Tinybird migration
-export const recordClickZodTBNew = tbNew.buildIngestEndpoint({
+export const recordClickZodTBNew = (tbNew as any).buildIngestEndpoint({
   datasource: "dub_click_events",
   event: recordClickZodSchema,
   wait: true,

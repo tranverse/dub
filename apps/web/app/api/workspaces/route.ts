@@ -99,7 +99,7 @@ export const POST = withSession(async ({ req, session }) => {
         //     message: `You can only create up to ${FREE_WORKSPACES_LIMIT} 222 free workspaces. Additional workspaces require a paid plan.`,
         //   });
         // }
-   
+
         const workspaceId = createWorkspaceId();
         uploadedImageUrl = logo
           ? `${R2_URL}/workspaces/${workspaceId}/logo_${nanoid(7)}`
@@ -110,6 +110,7 @@ export const POST = withSession(async ({ req, session }) => {
             id: workspaceId,
             name,
             slug,
+            plan: "enterprise",
             logo: uploadedImageUrl,
             users: {
               create: {

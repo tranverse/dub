@@ -11,13 +11,13 @@ const schema = z.object({
 });
 
 // Log the conversion events for debugging purposes
-export const logConversionEventTB = tb.buildIngestEndpoint({
+export const logConversionEventTB = (tb as any).buildIngestEndpoint({
   datasource: "dub_conversion_events_log",
   event: schema,
 });
 
 // TODO: Remove after Tinybird migration
-export const logConversionEventTBNew = tbNew.buildIngestEndpoint({
+export const logConversionEventTBNew = (tbNew as any).buildIngestEndpoint({
   datasource: "dub_conversion_events_log",
   event: schema,
 });

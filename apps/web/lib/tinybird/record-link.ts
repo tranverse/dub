@@ -44,14 +44,14 @@ export const dubLinksMetadataSchema = z.object({
     .transform((v) => (v ? 1 : 0)),
 });
 
-export const recordLinkTB = tb.buildIngestEndpoint({
+export const recordLinkTB = (tb as any).buildIngestEndpoint({
   datasource: "dub_links_metadata",
   event: dubLinksMetadataSchema,
   wait: true,
 });
 
 // TODO: Remove after Tinybird migration
-export const recordLinkTBNew = tbNew.buildIngestEndpoint({
+export const recordLinkTBNew = (tbNew as any).buildIngestEndpoint({
   datasource: "dub_links_metadata",
   event: dubLinksMetadataSchema,
   wait: true,

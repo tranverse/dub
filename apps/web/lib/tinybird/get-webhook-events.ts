@@ -2,7 +2,7 @@ import z from "../zod";
 import { webhookEventSchemaTB } from "../zod/schemas/webhooks";
 import { tb } from "./client";
 
-export const getWebhookEvents = tb.buildPipe({
+export const getWebhookEvents = (tb as any).buildPipe({
   pipe: "get_webhook_events",
   parameters: z.object({
     webhookId: z.string(),
