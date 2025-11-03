@@ -12,7 +12,10 @@ export const checkIfKeyExists = async ({
   domain: string;
   key: string;
 }) => {
-  if (domain?.includes(process.env.NEXT_PUBLIC_DEFAULT_DOMAIN!)) {
+  if (
+    domain?.includes(process.env.NEXT_PUBLIC_DEFAULT_DOMAIN!) &&
+    process.env.NODE_ENV == "development"
+  ) {
     domain = `${domain}:8888`;
   }
   const isCaseSensitive = isCaseSensitiveDomain(domain);

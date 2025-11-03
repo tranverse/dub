@@ -51,7 +51,10 @@ export async function createLink(link: ProcessedLinkProps) {
     domain: link.domain,
     key,
   });
-  if (link.domain?.includes(process.env.NEXT_PUBLIC_DEFAULT_DOMAIN!)) {
+  if (
+    link.domain?.includes(process.env.NEXT_PUBLIC_DEFAULT_DOMAIN!) &&
+    process.env.NODE_ENV == "development"
+  ) {
     link.domain = `${link.domain}:8888`;
   }
   const response = await withPrismaRetry(() =>

@@ -26,7 +26,7 @@ export function useLinkBuilderSubmit({
       if (
         props?.id &&
         rest.domain.includes(process.env.NEXT_PUBLIC_DEFAULT_DOMAIN!) &&
-        !rest.domain.includes(":")
+        !rest.domain.includes(":") && process.env.NODE_ENV == "development"
       ) {
         rest.domain = rest.domain + ":8888";
       }
